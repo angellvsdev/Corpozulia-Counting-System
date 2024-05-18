@@ -1,0 +1,225 @@
+.plus-jakarta-sans-light {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-medium {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+html:root {
+  font-size: 12px;
+}
+
+body {
+  background: #f5f3f4;
+  scroll-behavior: smooth;
+}
+
+.homepage_header {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: #f5f3f4;
+  flex-flow: column wrap;
+  align-items: center;
+}
+.homepage_header__company_logo {
+  width: 10.45rem;
+  height: 7.45rem;
+  justify-content: center;
+}
+.homepage_header__company_logo .company_logo {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+}
+.homepage_header__titles {
+  text-align: center;
+  font-size: 1.75rem;
+  padding: 10px;
+}
+.homepage_header__titles_description {
+  text-align: center;
+  font-size: 1.15rem;
+  padding: 10px;
+}
+.homepage_header__options {
+  display: flex;
+  align-items: center;
+  height: 30%;
+}
+.homepage_header__options > .base_button {
+  margin: 0 10px;
+}
+.homepage_header__options > .base_button > .base_button__button {
+  width: 12rem;
+  height: 6rem;
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+}
+.homepage_header__markers {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.homepage_header__markers_select {
+  font-size: 0.75rem;
+}
+.homepage_header__markers_select > a {
+  -webkit-text-decoration: underline #e5383b dotted 2.25px;
+          text-decoration: underline #e5383b dotted 2.25px;
+  color: #e5383b;
+  text-shadow: 0 0 20px #e5383b;
+}
+
+.information_title_container {
+  width: 100vw;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.information_module, .information_section {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.information_section {
+  width: 100vw;
+  height: 70vh;
+  background: #ececec;
+}
+.information_section__elements {
+  margin: 10px;
+  height: 50%;
+  display: flex;
+  flex-flow: column wrap;
+}
+.information_section__elements__title {
+  display: inline-flex;
+  height: 35%;
+  width: 90%;
+  align-self: center;
+  align-items: center;
+  font-size: 1.75rem;
+  color: #0b090a;
+  background: rgba(241, 241, 241, 0.7176470588);
+  border-radius: 6px;
+  border: 3px dashed #e5383b;
+}
+.information_section__elements__title__icon {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  width: 20%;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px #e5383b;
+  color: white;
+}
+.information_section__elements__content {
+  font-size: 1rem;
+  margin-top: 13px;
+  padding: 5px;
+  text-align: center;
+}
+.information_section__emblem {
+  width: 20rem;
+  height: 12rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  align-self: center;
+}
+.information_section__image {
+  width: 100%;
+}
+
+.homepage_footer {
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  flex-flow: column wrap;
+  background: linear-gradient(-45deg, #161a1d, #0b090a);
+  color: white;
+}
+.homepage_footer__developer_credits {
+  font-size: 1rem;
+  text-align: center;
+  margin: 10px;
+  padding: 20px;
+}
+.homepage_footer__developer_credits a {
+  color: #e5383b;
+}
+.homepage_footer__developer_credits a:visited {
+  color: #e5383b;
+}
+.homepage_footer__company_information {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.company_information {
+  flex-grow: 1;
+}
+.company_information__logo_image {
+  width: 18rem;
+  margin: 10px;
+}
+.company_information__address {
+  margin: 10px;
+}
+.company_information__social_media {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+.company_information__social_media__icon_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  box-shadow: 0 0 20px #e5383b;
+  font-size: 3rem;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.service_requirements_list {
+  padding: none;
+  text-align: start;
+}
+.service_requirements_list .requirement_item {
+  margin: 5px 0;
+}/*# sourceMappingURL=index.css.map */

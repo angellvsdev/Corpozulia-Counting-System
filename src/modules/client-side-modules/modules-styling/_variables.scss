@@ -1,0 +1,45 @@
+// Paleta de colores principal
+
+$night: #0b090aff;
+$eerie-black: #161a1dff;
+$blood-red: #660708ff;
+$cornell-red: #a4161aff;
+$cornell-red-2: #ba181bff;
+$imperial-red: #e5383bff;
+$silver: #b1a7a6ff;
+$timberwolf: #e6e6e6;
+$white-smoke: #f5f3f4ff;
+$white: #ffffffff;
+
+// Tipografía | Plus Jakarta Sans
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 800
+
+.plus-jakarta-sans-light {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-medium {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+// Tamaños de fuente
+$titles-font-sizing: 1.75rem;
+$subtitles-font-sizing: 1.15rem;
+$content-and-descriptions-font-sizing: 1rem;
+
+// Formas
+$box-cut-radius: 6px;

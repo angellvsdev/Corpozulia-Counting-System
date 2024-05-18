@@ -1,0 +1,226 @@
+@import './variables';
+
+html:root {
+    font-size: 12px;
+}
+
+body {
+    background: $white-smoke;
+    scroll-behavior: smooth;
+}
+
+.homepage_header {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: $white-smoke;
+    flex-flow: column wrap;
+    align-items: center;
+
+    &__company_logo {
+        width: 10.45rem;
+        height: 7.45rem;
+        justify-content: center;
+
+        .company_logo { object-fit: contain; width: 100%; }
+    }
+
+    &__titles {
+        text-align: center;
+        font-size: $titles-font-sizing;
+        padding: 10px;
+
+        &_description {
+            text-align: center;
+            font-size: $subtitles-font-sizing;
+            padding: 10px;
+        }
+    }
+
+    &__options {
+        display: flex;
+        align-items: center;
+        height: 30%;
+        
+        & > .base_button {
+            margin: 0 10px;
+
+            & > .base_button__button {
+                width: 12rem;
+                height: 6rem;
+                background: linear-gradient(-45deg, $cornell-red, $imperial-red);
+                border: none;
+                border-radius: $box-cut-radius;
+                font-size: $content-and-descriptions-font-sizing;
+                color: $white;
+                box-shadow: 0 0 20px $imperial-red;
+            } 
+        }
+    }
+
+    &__markers {
+        display: flex;
+        flex-flow: row wrap;
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        justify-content: space-evenly;
+
+        &_select {
+            font-size: .75rem;
+           
+            & > a {
+                text-decoration: underline $imperial-red dotted 2.25px;
+                color: $imperial-red;
+                text-shadow: 0 0 20px $imperial-red;
+            }
+        }
+    }
+}
+
+.information_title_container {
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $titles-font-sizing;
+    margin-bottom: 20px;
+}
+
+.information_module, .information_section {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.information_section {
+    width: 100vw;
+    height: 70vh;
+    background: #ececec;
+
+    &__elements {
+        margin: 10px;
+        height: 50%;
+        display: flex;
+        flex-flow: column wrap;
+
+        &__title {
+            display: inline-flex;
+            height: 35%;
+            width: 90%;       
+            align-self: center;     
+            align-items: center;
+            font-size: $titles-font-sizing;
+            color: $night;
+            background: #f1f1f1b7;
+            border-radius: $box-cut-radius;
+            border: 3px dashed $imperial-red;
+
+            &__icon {
+                background:  linear-gradient(-45deg, $cornell-red, $imperial-red);
+                width: 20%;
+                height: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.5rem;
+                margin-left: 10px;
+                margin-right: 10px;
+                border-radius: $box-cut-radius;
+                box-shadow: 0 0 20px $imperial-red;
+                color: $white;
+            }
+        }
+
+        &__content {
+            font-size: $content-and-descriptions-font-sizing;
+            margin-top: 13px;
+            padding: 5px;
+            text-align: center;
+        }
+    }
+
+    &__emblem {
+        width: 20rem;
+        height: 12rem;
+        object-fit: contain;
+        align-self: center;
+
+    }
+
+    &__image {
+        width: 100%;
+    }
+}
+
+.homepage_footer {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-flow: column wrap;
+    background: linear-gradient(-45deg, $eerie-black, $night);
+    color: $white;
+
+    &__developer_credits {
+        font-size: $content-and-descriptions-font-sizing;
+        text-align: center;
+        margin: 10px;
+        padding: 20px;
+
+        & a {
+            color: $imperial-red;
+
+            &:visited {
+                color: $imperial-red;
+            }
+        }
+    }
+
+    &__company_information {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.company_information {
+    flex-grow: 1;
+
+    &__logo_image {
+        width: 18rem;
+        margin: 10px;
+    }
+
+    &__address {
+        margin: 10px;
+    }
+
+    &__social_media {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+
+        &__icon_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(-45deg, $cornell-red, $imperial-red);
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            box-shadow: 0 0 20px $imperial-red;
+            font-size: 3rem;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    }
+}
+
+.service_requirements_list {
+    padding: none;
+    text-align: start;
+
+    .requirement_item {
+        margin: 5px 0;
+    }
+}
