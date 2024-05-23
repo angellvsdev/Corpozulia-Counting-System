@@ -209,9 +209,15 @@ body {
             width: 5rem;
             height: 5rem;
             box-shadow: 0 0 20px $imperial-red;
+            color: $white;
             font-size: 3rem;
             margin: 0 5px;
             cursor: pointer;
+            text-decoration: none;
+
+            &:visited {
+                color: $white;
+            }
         }
     }
 }

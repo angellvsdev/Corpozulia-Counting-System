@@ -2,7 +2,7 @@ import React from "react";
 
 export default function InformationSection(props) {
     return(
-        <div className="information_section">
+        <div className="information_section" id={props.identifier} >
             <div className="information_section__elements">
                 <div className="information_section__elements__title plus-jakarta-sans-bold">
                     <i className={props.icon + ' ' + "information_section__elements__title__icon"}></i> 

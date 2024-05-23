@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./HomepageHeader";
-import InformationModule from "./InformationModule";
-import HomepageFooter from "./HomepageFooter";
+import Header from "./Mainpage/HomepageHeader";
+import InformationModule from "./Mainpage/InformationModule";
+import HomepageFooter from "./Mainpage/HomepageFooter";
 
-export default function Homepage(props) {
+export default function Index(props) {
     return(
         <>
             <Header />

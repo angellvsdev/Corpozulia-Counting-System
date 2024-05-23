@@ -211,9 +211,14 @@ body {
   width: 5rem;
   height: 5rem;
   box-shadow: 0 0 20px #e5383b;
+  color: white;
   font-size: 3rem;
   margin: 0 5px;
   cursor: pointer;
+  text-decoration: none;
+}
+.company_information__social_media__icon_container:visited {
+  color: white;
 }
 
 .service_requirements_list {
