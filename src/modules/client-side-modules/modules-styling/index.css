@@ -19,6 +19,69 @@
   font-style: normal;
 }
 
+.plus-jakarta-sans-light {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-medium {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.formulary {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: white;
+  color: #0b090a;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 0;
+  text-align: center;
+}
+.formulary .go-back_formulary-button {
+  align-self: flex-start;
+  margin-left: 15px;
+}
+.formulary__headers {
+  width: 90%;
+  font-size: 1.15rem;
+}
+.formulary__sending_module {
+  width: 90%;
+  height: 60%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.formulary__sending_module .mandatory_input_field_flag {
+  align-self: flex-start;
+  margin: 20px 5px 10px 5px;
+  font-weight: 900;
+}
+.formulary__sending_module .input_field {
+  height: 3rem;
+  padding-left: 5px;
+}
+.formulary__sending_module .login-button {
+  margin: 25px;
+}
+
 html:root {
   font-size: 12px;
 }

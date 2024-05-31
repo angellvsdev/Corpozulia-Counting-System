@@ -1,0 +1,49 @@
+@import "./variables";
+
+.formulary {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: $white;
+    color: $night;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 0;
+    text-align: center;
+
+    .go-back_formulary-button {
+        align-self: flex-start;
+        margin-left: 15px;
+    }
+
+    &__headers {
+        width: 90%;
+        font-size: $subtitles-font-sizing;
+    }
+
+    &__sending_module {
+        width: 90%;
+        height: 60%;
+        border-radius: $box-cut-radius;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+
+        .mandatory_input_field_flag {
+            align-self: flex-start;
+            margin: 20px 5px 10px 5px;
+            font-weight: 900;
+        }
+        
+        .input_field {
+            height: 3rem;
+            padding-left: 5px;
+        }
+
+        .login-button {
+            margin: 25px;
+        }
+    }
+}
