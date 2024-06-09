@@ -42,20 +42,20 @@
 
 .formulary {
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 99vw;
   background: white;
   color: #0b090a;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   top: 0;
   text-align: center;
 }
 .formulary .go-back_formulary-button {
   align-self: flex-start;
-  margin-left: 15px;
+  margin: 15px;
 }
 .formulary__headers {
   width: 90%;
@@ -73,13 +73,31 @@
   align-self: flex-start;
   margin: 20px 5px 10px 5px;
   font-weight: 900;
-}
-.formulary__sending_module .input_field {
-  height: 3rem;
-  padding-left: 5px;
+  font-size: 0.85rem;
+  color: #a4161a;
 }
 .formulary__sending_module .login-button {
   margin: 25px;
+}
+
+.input_field {
+  height: 3rem;
+  background: rgba(235, 233, 233, 0.6588235294);
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+}
+.input_field::-moz-placeholder {
+  color: #0b090a;
+  font-weight: 600;
+}
+.input_field::placeholder {
+  color: #0b090a;
+  font-weight: 600;
+}
+
+.document_type_selection {
+  margin: 5px 0 5px 0;
 }
 
 html:root {
@@ -89,6 +107,7 @@ html:root {
 body {
   background: #f5f3f4;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .homepage_header {
@@ -130,12 +149,6 @@ body {
 .homepage_header__options > .base_button > .base_button__button {
   width: 12rem;
   height: 6rem;
-  background: linear-gradient(-45deg, #a4161a, #e5383b);
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  color: white;
-  box-shadow: 0 0 20px #e5383b;
 }
 .homepage_header__markers {
   display: flex;
@@ -290,4 +303,14 @@ body {
 }
 .service_requirements_list .requirement_item {
   margin: 5px 0;
+}
+
+.base_button__button {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+  padding: 10px;
 }/*# sourceMappingURL=index.css.map */

@@ -3,6 +3,7 @@ import Header from "./Mainpage/HomepageHeader";
 import InformationModule from "./Mainpage/InformationModule";
 import HomepageFooter from "./Mainpage/HomepageFooter";
 import SignInForm from "./Login/SignIn";
+import SignUpForm from "./Login/SignUp";
 
 export default function Index(props) {
     return(
@@ -14,6 +15,7 @@ export default function Index(props) {
             <InformationModule />
             <HomepageFooter />
             <SignInForm></SignInForm>
+            <SignUpForm></SignUpForm>
         </>
     )
 }

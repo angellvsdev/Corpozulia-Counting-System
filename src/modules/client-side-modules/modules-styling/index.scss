@@ -7,6 +7,7 @@ html:root {
 body {
     background: $white-smoke;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .homepage_header {
@@ -48,12 +49,6 @@ body {
             & > .base_button__button {
                 width: 12rem;
                 height: 6rem;
-                background: linear-gradient(-45deg, $cornell-red, $imperial-red);
-                border: none;
-                border-radius: $box-cut-radius;
-                font-size: $content-and-descriptions-font-sizing;
-                color: $white;
-                box-shadow: 0 0 20px $imperial-red;
             } 
         }
     }
@@ -229,4 +224,14 @@ body {
     .requirement_item {
         margin: 5px 0;
     }
+}
+
+.base_button__button {
+    background: linear-gradient(-45deg, $cornell-red, $imperial-red);
+    border: none;
+    border-radius: $box-cut-radius;
+    font-size: $content-and-descriptions-font-sizing;
+    color: $white;
+    box-shadow: 0 0 20px $imperial-red;
+    padding: 10px;
 }
