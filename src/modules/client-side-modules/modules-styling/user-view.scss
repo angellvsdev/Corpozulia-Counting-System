@@ -1,0 +1,11 @@
+@import './variables';
+
+html:root {
+    font-size: 12px;
+}
+
+body {
+    background: $white-smoke;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}

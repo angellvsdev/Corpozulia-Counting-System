@@ -43,3 +43,14 @@ $content-and-descriptions-font-sizing: 1rem;
 
 // Formas
 $box-cut-radius: 6px;
+
+// Componente de boton base
+.base_button__button {
+  background: linear-gradient(-45deg, $cornell-red, $imperial-red);
+  border: none;
+  border-radius: $box-cut-radius;
+  font-size: $content-and-descriptions-font-sizing;
+  color: $white;
+  box-shadow: 0 0 20px $imperial-red;
+  padding: 10px;
+}

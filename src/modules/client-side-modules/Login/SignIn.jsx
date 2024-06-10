@@ -5,7 +5,7 @@ import Button from "./../Mainpage/BaseButton.jsx"
 export default function SignInForm(props) {
     return(
         <>
-            <div className="formulary">
+            <div className="formulary for_sign_in">
                 <Button icon="fa-solid fa-arrow-left" content="Atras" elementContext="go-back_formulary-button" />
                 <div className="formulary__headers">
                     <h1 className="formulary__headers__title plus-jakarta-sans-bold">Inicio de Sesión <i class="fa-solid fa-person-walking-arrow-right"></i></h1>

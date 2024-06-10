@@ -19,6 +19,16 @@
   font-style: normal;
 }
 
+.base_button__button {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+  padding: 10px;
+}
+
 .plus-jakarta-sans-light {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-optical-sizing: auto;
@@ -38,6 +48,16 @@
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
+}
+
+.base_button__button {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+  padding: 10px;
 }
 
 .formulary {
@@ -98,6 +118,14 @@
 
 .document_type_selection {
   margin: 5px 0 5px 0;
+}
+
+.for_sign_up {
+  left: 100vw;
+}
+
+.for_sign_in {
+  left: -100vw;
 }
 
 html:root {
@@ -303,14 +331,4 @@ body {
 }
 .service_requirements_list .requirement_item {
   margin: 5px 0;
-}
-
-.base_button__button {
-  background: linear-gradient(-45deg, #a4161a, #e5383b);
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  color: white;
-  box-shadow: 0 0 20px #e5383b;
-  padding: 10px;
 }/*# sourceMappingURL=index.css.map */
