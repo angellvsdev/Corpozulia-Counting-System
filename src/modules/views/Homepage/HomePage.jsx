@@ -1,9 +1,8 @@
 import React from "react";
-import Header from "./Mainpage/HomepageHeader";
-import InformationModule from "./Mainpage/InformationModule";
-import HomepageFooter from "./Mainpage/HomepageFooter";
-import SignInForm from "./Login/SignIn";
-import SignUpForm from "./Login/SignUp";
+import Header from "./HomepageHeader";
+import InformationModule from "./InformationModule";
+import HomepageFooter from "./HomepageFooter";
+import '../../modules-styling/index.css'
 
 export default function Index(props) {
     return(
@@ -14,8 +13,6 @@ export default function Index(props) {
             </div>
             <InformationModule />
             <HomepageFooter />
-            <SignInForm></SignInForm>
-            <SignUpForm></SignUpForm>
         </>
     )
 }
