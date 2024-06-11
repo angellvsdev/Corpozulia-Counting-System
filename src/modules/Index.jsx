@@ -1,16 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Homepage from './Views/Homepage/HomePage';
-import Login from './Views/Login/Login';
-import SignUp from './Views/Login/SignUp';
-import '../../modules/client-side-modules/modules-styling/index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Index from "../modules/views/Homepage/HomePage.jsx";
+import Login from '../modules/views/Login/Login.jsx';
+import SignUp from '../modules/views/SignUp/SignUp.jsx';
+import '../modules/styles/index.css';
+
 const App = () => (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Index />} />
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<SignUp />} />
         </Routes>
     </BrowserRouter>
-  );
-  export default App;
+  )
+
+export default App;

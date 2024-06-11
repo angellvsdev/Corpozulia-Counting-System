@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from '../Homepage/BaseButton'
+import Button from '../../components/BaseButton.jsx'
 
 function Login() {
     const [documentId, setDocumentId] = useState('');
@@ -54,4 +54,5 @@ function Login() {
         </>
     )
 }
+
 export default Login;

@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Index from './Index.jsx'
-import './modules-styling/index.css'
+import App from './Index.jsx'
+import ".././modules/styles/index.css"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Index />
+    <App />
   </React.StrictMode>,
 )

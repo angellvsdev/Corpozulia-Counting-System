@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./HomepageHeader";
-import InformationModule from "./InformationModule";
-import HomepageFooter from "./HomepageFooter";
-import '../../modules-styling/index.css'
+import Header from "../Homepage/HomepageHeader.jsx";
+import InformationModule from "../Homepage/InformationModule.jsx";
+import HomepageFooter from "../Homepage/HomepageFooter.jsx";
+import "../../styles/index.css";
 
 export default function Index(props) {
     return(
