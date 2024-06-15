@@ -1,0 +1,58 @@
+html:root {
+  font-size: 12px;
+}
+
+body {
+  background: #f5f3f4;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.plus-jakarta-sans-light {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-medium {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.base_button__button {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+  padding: 10px;
+}
+
+.administration_menu {
+  width: 100vw;
+  height: 6rem;
+  border-radius: 6px;
+  background: #252525;
+  position: absolute;
+  bottom: 0;
+}
+.administration_menu > .menu_button {
+  flex-grow: auto;
+  width: 37.5%;
+}
+.administration_menu > .menu_button > .menu_button__trigger {
+  color: #b1a7a6;
+  font-size: 1.05rem;
+  font-weight: 900;
+}/*# sourceMappingURL=admin-view.css.map */

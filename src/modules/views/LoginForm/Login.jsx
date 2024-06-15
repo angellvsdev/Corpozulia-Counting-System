@@ -1,18 +1,44 @@
 import React, { useState } from "react";
 import Button from '../../components/BaseButton.jsx'
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [documentId, setDocumentId] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!documentId || !password) {
             setErrorMessage('Por favor complete todos los campos.');
         } else {
             setErrorMessage('');
             console.log('Iniciando sesión con cedula ' + documentId + ' y contraseña ' + password);
+
+            const isValidUser = await checkDocument(documentId)
+
+            if (isValidUser) {
+                const getUserDatasheet = () => {
+                    fetch(`https://domain/${documentId}`)
+                    .then(jsonSheetResponse => {
+                        return JSON.parse(jsonSheetResponse);
+                    })
+                    .then(dataSheet => {
+                        const rawUserProfile = dataSheet;
+
+                        if (rawUserProfile.numberId) {
+                            return useNavigate('/adminView', {rawUserProfile})
+                        }
+
+                        return useNavigate('/userView', { rawUserProfile });
+                    })
+                    .catch(err => {
+                        throw buildErrorComponent(err);
+                    })
+                };
+
+                return getUserDatasheet();
+            }
         }
     };
 
@@ -30,7 +56,7 @@ function Login() {
                         <input
                             id="document_id"
                             type="number"
-                            placeholder="Carnet de identidad"
+                            placeholder="Ej: 12.345.678"
                             value={documentId}
                             onChange={(e) => setDocumentId(e.target.value)}
                             required
@@ -41,7 +67,7 @@ function Login() {
                         <input
                             id="user_password"
                             type="password"
-                            placeholder="Contraseña"
+                            placeholder="Ej: Mi-Contraseña123"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required

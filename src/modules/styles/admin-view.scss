@@ -1,0 +1,21 @@
+@import './variables';
+
+.administration_menu {
+    width: 100vw;
+    height: 6rem;
+    border-radius: $box-cut-radius;
+    background: #252525;
+    position: absolute;
+    bottom: 0;
+
+    & > .menu_button {
+        flex-grow: auto;
+        width: 37.5%;
+
+        & > .menu_button__trigger {
+            color: $silver;
+            font-size: 1.05rem;
+            font-weight: 900;
+        }
+    }
+}

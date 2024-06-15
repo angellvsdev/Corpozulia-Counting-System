@@ -49,73 +49,73 @@ function SignUp() {
                 <p className="formulary__headers__details plus-jakarta-sans-medium">¡Bienvenido! Para registrarte, asegurate de llenar todos los campos de caracter obligatorio. Recuerda que el censo solamente se realiza una vez por persona. Posterior al registro, entrarás en un periodo de espera en lo que se aprueba tu solicitud de prestación.</p>
             </div>
             <form onSubmit={handleSubmit} className="formulary__sending_module sign_in_formulary plus-jakarta-sans-medium">
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userName">Nombres</label>
                     <input
                         id="userName"
                         type="text"
-                        placeholder="Nombres"
+                        placeholder="Ej: Angel Leonardo"
                         value={formData.userName}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userSurname">Apellidos</label>
                     <input
                         id="userSurname"
                         type="text"
-                        placeholder="Apellidos"
+                        placeholder="Ej: Vera Soto"
                         value={formData.userSurname}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userEmail">Correo electrónico</label>
                     <input
                         id="userEmail"
                         type="email"
-                        placeholder="Correo electrónico"
+                        placeholder="Ej: renymireles@correo.com"
                         value={formData.userEmail}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userPassword">Ingrese su contraseña</label>
                     <input
                         id="userPassword"
                         type="password"
-                        placeholder="Ingrese su contraseña"
+                        placeholder="Ej: Mi-Contraseña123"
                         value={formData.userPassword}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userPasswordConfirm">Confirme su contraseña</label>
                     <input
                         id="userPasswordConfirm"
                         type="password"
-                        placeholder="Confirme su contraseña"
+                        placeholder="Ej: Mi-Contraseña123"
                         value={formData.userPasswordConfirm}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userDocumentId">Cédula de identidad</label>
                     <input
                         id="userDocumentId"
                         type="number"
-                        placeholder="Cédula de identidad"
+                        placeholder="Ej: 12.345.678"
                         value={formData.userDocumentId}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="documentType">Tipo de documento</label>
                     <select
                         id="documentType"
@@ -131,7 +131,6 @@ function SignUp() {
                     </select>
                 </div>
                 <div className="input-group">
-                    <label htmlFor="userLocation">Localidad</label>
                     <select
                         id="userLocation"
                         className="input_field"
@@ -145,23 +144,23 @@ function SignUp() {
                         <option value="Bartolomé">Bartolomé</option>
                     </select>
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="requestReason">Solicitud</label>
                     <input
                         id="requestReason"
                         type="text"
-                        placeholder="Solicitud"
+                        placeholder="..."
                         value={formData.requestReason}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group input_field">
                     <label htmlFor="userNumber">Número de teléfono</label>
                     <input
                         id="userNumber"
                         type="tel"
-                        placeholder="Número de teléfono"
+                        placeholder="Ej: 0412-123-4567"
                         value={formData.userNumber}
                         onChange={handleChange}
                         required

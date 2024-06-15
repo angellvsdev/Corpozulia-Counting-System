@@ -1,14 +1,4 @@
-@import './variables', './formularies';
-
-html:root {
-    font-size: 12px;
-}
-
-body {
-    background: $white-smoke;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-}
+@import './_variables', './_formularies';
 
 .homepage_header {
     width: 100vw;
@@ -144,7 +134,7 @@ body {
     }
 
     &__image {
-        width: 100%;
+        width: 80%;
     }
 }
 
