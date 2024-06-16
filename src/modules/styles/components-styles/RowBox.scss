@@ -1,0 +1,12 @@
+@import '../variables';
+
+.row_box {
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+
+    & > * {
+        margin: 2.5px;
+        flex-grow: 1;
+    }
+}

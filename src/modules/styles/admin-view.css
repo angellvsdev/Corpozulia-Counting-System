@@ -39,12 +39,20 @@ body {
   padding: 10px;
 }
 
-.row_box {
-  display: flex;
-  flex-flow: row nowrap;
-  align-content: center;
+.administration_menu {
+  width: 100vw;
+  height: 6rem;
+  border-radius: 6px;
+  background: #252525;
+  position: absolute;
+  bottom: 0;
 }
-.row_box > * {
-  margin: 2.5px;
-  flex-grow: 1;
-}/*# sourceMappingURL=RowBox.css.map */
+.administration_menu > .menu_button {
+  flex-grow: auto;
+  width: 37.5%;
+}
+.administration_menu > .menu_button > .menu_button__trigger {
+  color: #b1a7a6;
+  font-size: 1.05rem;
+  font-weight: 900;
+}/*# sourceMappingURL=admin-view.css.map */

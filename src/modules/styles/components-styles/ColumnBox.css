@@ -39,12 +39,12 @@ body {
   padding: 10px;
 }
 
-.row_box {
+.column_box {
   display: flex;
-  flex-flow: row nowrap;
-  align-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
 }
-.row_box > * {
+.column_box > * {
   margin: 2.5px;
   flex-grow: 1;
-}/*# sourceMappingURL=RowBox.css.map */
+}/*# sourceMappingURL=ColumnBox.css.map */

@@ -1,6 +1,5 @@
 import React from "react";
 import InformationSection from "./InformationSection";
-import ModalVignet from "./ModalVignet";
 
 export default function InformationModule(props) {
     return(
@@ -16,14 +15,6 @@ export default function InformationModule(props) {
                         </ul>
                     } 
                     sectionEmblem="src\assets\undraw_agreement_re_d4dv.svg" 
-                />
-                <InformationSection identifier="faq" icon="fa-solid fa-circle-question" sectionTitle="Preguntas Frecuentes" 
-                    sectionContent={
-                        <>
-                            <p className="faq_introduction">Para casos donde tenga dudas, he aquí la sección de soporte, esperamos que pueda calmar inquietudes</p>
-                        </>
-                    } 
-                    sectionEmblem="src\assets\undraw_faq_re_31cw.svg" 
                 />
             </div>
         </>        
