@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
-import ColumnBox from "./ColumnBox";
-import RowBox from './RowBox';
+import ColumnBox from "./flexbox-template-components/ColumnBox/ColumnBox";
+import RowBox from "../components/flexbox-template-components/RowBox/RowBox";
 import UserDataField from './UserDataField';
 
 const UserProfileHeader = (props) => (
@@ -9,8 +9,8 @@ const UserProfileHeader = (props) => (
             <RowBox componentContext="profile_header_symbol" childComponents={
                 <div className="profile_header_symbol__icon"><i className={`profile_header_symbol__icon_element ${props.headerIcon}`}></i></div>
             } />
-            <UserDataField dataContent="Angel Vera" dataIdentifier="header-names"/>
-            <UserDataField dataContent="33033170" dataIdentifier="header-document-id"/>
+            <UserDataField dataContent="Reny Mireles" dataIdentifier="header-names"/>
+            <UserDataField dataContent="123456789" dataIdentifier="header-document-id"/>
         </>
     } />
 )

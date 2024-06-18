@@ -1,7 +1,8 @@
 import React from "react";
-import UserProfileHeader from "./UserProfileHeader";
+import UserProfileHeader from "../UserProfileHeader";
 import AdminProfileBody from "./AdminProfileBody";
-import "../styles/components-styles/AdminProfile.css";
+import "./admin-view.css";
+import "./AdminProfile.css"
 
 
 const AdminProfile = (props) => (

@@ -54,7 +54,7 @@ function SignUp() {
                     <input
                         id="userName"
                         type="text"
-                        placeholder="Ej: Angel Leonardo"
+                        placeholder="Ej: Manuel Finol"
                         value={formData.userName}
                         onChange={handleChange}
                         required
@@ -65,7 +65,7 @@ function SignUp() {
                     <input
                         id="userSurname"
                         type="text"
-                        placeholder="Ej: Vera Soto"
+                        placeholder="Ej: Finol Manuel"
                         value={formData.userSurname}
                         onChange={handleChange}
                         required
@@ -76,7 +76,7 @@ function SignUp() {
                     <input
                         id="userEmail"
                         type="email"
-                        placeholder="Ej: renymireles@correo.com"
+                        placeholder="Ej: manufinol@correo.com"
                         value={formData.userEmail}
                         onChange={handleChange}
                         required
@@ -138,10 +138,11 @@ function SignUp() {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Localidad</option>
-                        <option value="Machiques">Machiques</option>
+                        <option value={null}>Localidad de Machiques</option>
+                        <option value="Libertad">Libertad</option>
                         <option value="Río Negro">Río Negro</option>
-                        <option value="Bartolomé">Bartolomé</option>
+                        <option value="Bartolomé de las Casas">Bartolomé de las Casas</option>
+                        <option value="San José">San José</option>
                     </select>
                 </div>
                 <div className="input-group input_field">

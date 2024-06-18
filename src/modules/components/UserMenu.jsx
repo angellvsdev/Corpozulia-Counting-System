@@ -1,5 +1,5 @@
 import React from "react";
-import RowBox from "./RowBox";
+import RowBox from "./flexbox-template-components/RowBox/RowBox";
 import MenuButton from "./MenuButton";
 
 const UserMenu = (props) => (

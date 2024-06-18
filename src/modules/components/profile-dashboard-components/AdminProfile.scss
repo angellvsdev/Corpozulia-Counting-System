@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../styles/variables";
 
 .profile_view {
     height: 100vh;
@@ -6,6 +6,20 @@
     .user_profile_header {
         height: 40vh;
         font-weight: 900;
+        margin-bottom: 20px;
+        background: linear-gradient(-45deg, #2a292b, #454346);
+        color: $white;
+
+        &:after {
+            width: 3rem;
+            height: .5rem;
+            background: $imperial-red;
+            border-radius: $box-cut-radius;
+            display: block;
+            content: "";
+            margin: auto;
+            transform: translateY(-125%);
+        }
         
         .profile_header_symbol {
             align-items: center;
@@ -17,8 +31,6 @@
             flex-grow: 20;
             width: 10rem;
             margin-top: 20px;
-            box-shadow: 0 0 20px $imperial-red;
-
         }
 
         #header-names {
@@ -50,8 +62,11 @@
             }
 
             &:after {
-                width: 3rem;
-                height: .5rem;
+                border-radius: $box-cut-radius;
+                opacity: .5;
+                transform: translateY(-125%);
+                width: 100%;
+                height: .25rem;
                 background: $silver;
                 display: block;
                 content: "";
