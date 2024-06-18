@@ -1,10 +1,11 @@
 import { React, useState } from "react";
 import UserMenu from "../../components/UserMenu";
-import "../../styles/admin-view.css"
-
+import AdminProfile from "../../components/AdminProfile";
+import "../../styles/admin-view.css";
 const AdminView = (props) => ( 
     <>
-        <UserMenu></UserMenu>
+        <AdminProfile />
+        <UserMenu />
     </>
 )
 

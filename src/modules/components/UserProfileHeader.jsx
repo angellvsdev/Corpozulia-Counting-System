@@ -4,13 +4,13 @@ import RowBox from './RowBox';
 import UserDataField from './UserDataField';
 
 const UserProfileHeader = (props) => (
-    <ColumnBox componentContext="user_profile_header" childComponents={
+    <ColumnBox componentContext="user_profile_header plus-jakarta-sans-bold" childComponents={
         <>
             <RowBox componentContext="profile_header_symbol" childComponents={
-                <div className="profile_header_symbol__icon"><i className={`profile_header_symbol__icon_element ${props.icon}`}></i></div>
+                <div className="profile_header_symbol__icon"><i className={`profile_header_symbol__icon_element ${props.headerIcon}`}></i></div>
             } />
-            <UserDataField dataTag="header-names"/>
-            <UserDataField dataTag="header-document-id"/>
+            <UserDataField dataContent="Angel Vera" dataIdentifier="header-names"/>
+            <UserDataField dataContent="33033170" dataIdentifier="header-document-id"/>
         </>
     } />
 )

@@ -44,7 +44,7 @@ body {
   height: 6rem;
   border-radius: 6px;
   background: #252525;
-  position: absolute;
+  position: sticky;
   bottom: 0;
 }
 .administration_menu > .menu_button {

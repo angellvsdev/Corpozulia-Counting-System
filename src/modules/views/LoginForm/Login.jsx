@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 function Login() {
     const [documentId, setDocumentId] = useState('');
     const [password, setPassword] = useState('');
+    const [documentType, setDocType] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!documentId || !password) {
+        if (!documentId || !password || !documentType) {
             setErrorMessage('Por favor complete todos los campos.');
         } else {
             setErrorMessage('');
@@ -51,6 +52,20 @@ function Login() {
                     <p className="formulary__headers__details plus-jakarta-sans-medium">¡Bienvenido de nuevo! En caso de no haberte inscrito, recuerda que debes censarte.</p>
                 </div>
                 <form onSubmit={handleSubmit} className="formulary__sending_module sign_in_formulary plus-jakarta-sans-medium">
+                    <div className="input_field">
+                        <select
+                            id="documentType"
+                            className="input_field"
+                            value={documentType}
+                            onChange={(e) => setDocType(e.target.value)}
+                            required
+                        >
+                            <option value={null} default>Tipo de documento</option>
+                            <option value="V">- V</option>
+                            <option value="E">- E</option>
+                            <option value="J">- J</option>
+                        </select>
+                    </div>
                     <div className="input_field">
                         <label htmlFor="document_id">Carnet de identidad</label>
                         <input

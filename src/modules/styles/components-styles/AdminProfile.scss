@@ -1,0 +1,97 @@
+@import "../variables.scss";
+
+.profile_view {
+    height: 100vh;
+
+    .user_profile_header {
+        height: 40vh;
+        font-weight: 900;
+        
+        .profile_header_symbol {
+            align-items: center;
+            background: linear-gradient(-45deg, $blood-red, $cornell-red);
+            color: $white-smoke;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 3.45rem;
+            flex-grow: 20;
+            width: 10rem;
+            margin-top: 20px;
+            box-shadow: 0 0 20px $imperial-red;
+
+        }
+
+        #header-names {
+            font-size: $titles-font-sizing;
+            display: flex;
+        }
+
+        #header-document-id {
+            margin-top: 0;
+            font-size: $subtitles-font-sizing;
+
+            & > p {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .profile_basics {
+        padding-left: 35px;
+        max-height: 50vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        align-items: flex-start;
+
+        .profile_data_element {
+            &:before {
+                font-size: 1.25rem;
+                font-weight: 900;
+            }
+
+            &:after {
+                width: 3rem;
+                height: .5rem;
+                background: $silver;
+                display: block;
+                content: "";
+            }
+        }
+
+        #admin-names:before {
+            content: "Nombre: ";
+        }
+
+        #admin-surnames:before {
+            content: "Apellidos: ";
+        }
+
+        #admin-document-id:before {
+            content: "Cédula: ";
+        }
+
+        #admin-email:before {
+            content: "Correo eléctronico: ";
+        }
+
+        #admin-password:before {
+            content: "Contraseña: ";
+        }
+
+        #admin-phone-number:before {
+            content: "Teléfono: ";
+        }
+
+        #admin-location:before {
+            content: "Localización: ";
+        }
+
+        #admin-age:before {
+            content: "Edad: ";
+        }
+
+        #admin-gender:before {
+            content: "Género: ";
+        }
+    }
+}
