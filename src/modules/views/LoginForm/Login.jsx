@@ -7,41 +7,47 @@ function Login() {
     const [password, setPassword] = useState('');
     const [documentType, setDocType] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
+    const {user, setUser} =useUser();
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!documentId || !password || !documentType) {
+        
+        if (!documentId || !password) {
             setErrorMessage('Por favor complete todos los campos.');
-        } else {
-            setErrorMessage('');
-            console.log('Iniciando sesión con cedula ' + documentId + ' y contraseña ' + password);
-
-            const isValidUser = await checkDocument(documentId)
-
-            if (isValidUser) {
-                const getUserDatasheet = () => {
-                    fetch(`https://domain/${documentId}`)
-                    .then(jsonSheetResponse => {
-                        return JSON.parse(jsonSheetResponse);
-                    })
-                    .then(dataSheet => {
-                        const rawUserProfile = dataSheet;
-
-                        if (rawUserProfile.numberId) {
-                            return useNavigate('/adminView', {rawUserProfile})
-                        }
-
-                        return useNavigate('/userView', { rawUserProfile });
-                    })
-                    .catch(err => {
-                        throw buildErrorComponent(err);
-                    })
-                };
-
-                return getUserDatasheet();
-            }
+            return; // Salir de la función si los campos están incompletos
         }
+    
+        setErrorMessage('');
+    
+        try {
+            // Suponiendo que `documentId` es el nombre de usuario
+            const response = await axios.post('/api/login', {
+                username: documentId,
+                password: password
+            });
+    
+            if (response.status === 200) {
+                const userData = response.data;
+                setUser(userData);
+    
+                if (userData.roles === "ADMIN") {
+                    navigate("/admin");
+                } else if (userData.roles === "USER") {
+                    navigate("/user");
+                } else {
+                    console.error("Error, rol de usuario no identificado");
+                }
+            } else {
+                setErrorMessage('Ocurrió un error al iniciar sesión.');
+            }
+        } catch (error) {
+            setErrorMessage(error.response.data.message)
+        }
+    
+        console.log('Iniciando sesión con cedula ' + documentId + ' y contraseña ' + password);
     };
+    
 
     return (
         <>
