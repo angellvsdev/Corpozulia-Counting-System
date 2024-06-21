@@ -1,7 +1,3 @@
-html:root {
-  font-size: 12px;
-}
-
 body {
   background: #f5f3f4;
   scroll-behavior: smooth;
@@ -33,16 +29,12 @@ body {
   background: linear-gradient(-45deg, #a4161a, #e5383b);
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1em;
   color: white;
   box-shadow: 0 0 20px #e5383b;
   padding: 10px;
 }
 
-html:root {
-  font-size: 12px;
-}
-
 body {
   background: #f5f3f4;
   scroll-behavior: smooth;
@@ -74,7 +66,7 @@ body {
   background: linear-gradient(-45deg, #a4161a, #e5383b);
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1em;
   color: white;
   box-shadow: 0 0 20px #e5383b;
   padding: 10px;
@@ -82,7 +74,7 @@ body {
 
 .formulary {
   position: absolute;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   background: white;
   color: #0b090a;
@@ -92,6 +84,8 @@ body {
   align-items: center;
   top: 0;
   text-align: center;
+  font-size: 12px;
+  overflow: auto;
 }
 .formulary .go-back_formulary-button {
   align-self: flex-start;
@@ -99,7 +93,7 @@ body {
 }
 .formulary__headers {
   width: 90%;
-  font-size: 1.15rem;
+  font-size: 1em;
 }
 .formulary__sending_module {
   width: 90%;
@@ -113,7 +107,7 @@ body {
   align-self: flex-start;
   margin: 20px 5px 10px 5px;
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 0.85em;
   color: #a4161a;
 }
 .formulary__sending_module .login-button {
@@ -121,7 +115,7 @@ body {
 }
 
 .input_field {
-  height: 5rem;
+  height: 5em;
   background: rgba(235, 233, 233, 0.6588235294);
   background: #e5383b;
   border-radius: 6px;
@@ -146,7 +140,7 @@ body {
   height: 100%;
   border: none;
   background: none;
-  height: 3rem;
+  height: 3em;
   text-align: center;
 }
 .input_field input::-moz-placeholder {
@@ -162,6 +156,10 @@ body {
 
 .document_type_selection {
   margin: 5px 0 5px 0;
+}
+
+html:root {
+  font-size: 12px;
 }
 
 .homepage_header {
@@ -189,7 +187,7 @@ body {
 }
 .homepage_header__titles_description {
   text-align: center;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   padding: 10px;
 }
 .homepage_header__options {

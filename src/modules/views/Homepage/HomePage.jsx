@@ -3,6 +3,8 @@ import Header from "../Homepage/HomepageHeader.jsx";
 import InformationModule from "../Homepage/InformationModule.jsx";
 import HomepageFooter from "../Homepage/HomepageFooter.jsx";
 import "../../styles/index.css";
+import "../../styles/responsive-adaptations/general_responsive.css";
+
 
 export default function Index(props) {
     return(

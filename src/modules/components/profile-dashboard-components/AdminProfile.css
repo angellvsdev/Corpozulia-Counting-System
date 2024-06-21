@@ -1,6 +1,142 @@
 @charset "UTF-8";
-html:root {
-  font-size: 12px;
+body {
+  background: #f5f3f4;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.plus-jakarta-sans-light {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-medium {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.base_button__button {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+  padding: 10px;
+}
+
+.profile_view {
+  height: 100vh;
+  font-size: 14px;
+}
+.profile_view .user_profile_header {
+  font-size: 1.2em;
+  height: 40vh;
+  font-weight: 900;
+  margin-bottom: 20px;
+  background: linear-gradient(-45deg, #e5383b, #660708);
+  color: white;
+}
+.profile_view .user_profile_header:after {
+  width: 3em;
+  height: 0.5em;
+  background: #e5383b;
+  border-radius: 6px;
+  display: block;
+  content: "";
+  margin: auto;
+  transform: translateY(-125%);
+}
+.profile_view .user_profile_header .profile_header_symbol {
+  align-items: center;
+  color: #f5f3f4;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1.75em;
+  flex-grow: 20;
+  margin-top: 20px;
+}
+.profile_view .user_profile_header .profile_header_symbol__icon_element {
+  font-size: 1.5em;
+}
+.profile_view .user_profile_header #header-names {
+  font-size: 1.2em;
+  display: flex;
+}
+.profile_view .user_profile_header #header-document-id {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+.profile_view .user_profile_header #header-document-id > p {
+  margin-top: 0;
+}
+.profile_view .user_profile_data_body {
+  font-size: 1em;
+}
+.profile_view .profile_basics {
+  padding-left: 35px;
+  max-height: 50vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  align-items: flex-start;
+}
+.profile_view .profile_basics .profile_data_element {
+  font-size: 14px;
+}
+.profile_view .profile_basics .profile_data_element_content {
+  font-size: 1em;
+}
+.profile_view .profile_basics .profile_data_element:before {
+  font-size: 0.95em;
+  font-weight: 900;
+}
+.profile_view .profile_basics .profile_data_element:after {
+  border-radius: 6px;
+  opacity: 0.5;
+  transform: translateY(-125%);
+  width: 100%;
+  height: 0.25em;
+  background: #b1a7a6;
+  display: block;
+  content: "";
+}
+.profile_view .profile_basics #admin-names:before {
+  content: "Nombre: ";
+}
+.profile_view .profile_basics #admin-surnames:before {
+  content: "Apellidos: ";
+}
+.profile_view .profile_basics #admin-document-id:before {
+  content: "Cédula: ";
+}
+.profile_view .profile_basics #admin-email:before {
+  content: "Correo eléctronico: ";
+}
+.profile_view .profile_basics #admin-password:before {
+  content: "Contraseña: ";
+}
+.profile_view .profile_basics #admin-phone-number:before {
+  content: "Teléfono: ";
+}
+.profile_view .profile_basics #admin-location:before {
+  content: "Localización: ";
+}
+.profile_view .profile_basics #admin-age:before {
+  content: "Edad: ";
+}
+.profile_view .profile_basics #admin-gender:before {
+  content: "Género: ";
 }
 
 body {
@@ -34,99 +170,79 @@ body {
   background: linear-gradient(-45deg, #a4161a, #e5383b);
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1em;
   color: white;
   box-shadow: 0 0 20px #e5383b;
   padding: 10px;
 }
 
-.profile_view {
-  height: 100vh;
+@media screen and (min-width: 768px) {
+  html:root {
+    font-size: 16px;
+  }
+  .modal_window {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    background: linear-gradient(-45deg, #a4161a, #e5383b);
+  }
+  .formulary {
+    width: 60vw;
+    height: 75vh;
+    position: absolute;
+    top: 10%;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .homepage_header__markers_select {
+    font-size: 1em;
+  }
+  .information_section__elements__content {
+    padding: 25px;
+  }
+  .information_section__image {
+    width: 80%;
+  }
+  .profile_header_symbol__icon {
+    font-size: 2.5em;
+    width: 4em;
+  }
 }
-.profile_view .user_profile_header {
-  height: 40vh;
-  font-weight: 900;
-  margin-bottom: 20px;
-  background: linear-gradient(-45deg, #2a292b, #454346);
-  color: white;
+@media screen and (min-width: 912px) {
+  html:root {
+    font-size: 17px;
+  }
+  .formulary {
+    font-size: 15px;
+  }
+  .profile_view .profile_basics .profile_data_element {
+    font-size: 18px;
+  }
+  .administration_menu {
+    width: 5em;
+    top: 5%;
+    bottom: 5%;
+    right: 5%;
+    height: 60vh;
+    flex-flow: column wrap;
+    align-content: center;
+    left: 80%;
+    width: 8em;
+    font-size: 18px;
+  }
 }
-.profile_view .user_profile_header:after {
-  width: 3rem;
-  height: 0.5rem;
-  background: #e5383b;
-  border-radius: 6px;
-  display: block;
-  content: "";
-  margin: auto;
-  transform: translateY(-125%);
+@media screen and (min-width: 1280px) {
+  .administration_menu {
+    left: 90%;
+    right: 10%;
+  }
 }
-.profile_view .user_profile_header .profile_header_symbol {
-  align-items: center;
-  background: linear-gradient(-45deg, #660708, #a4161a);
-  color: #f5f3f4;
-  text-align: center;
-  border-radius: 50%;
-  font-size: 3.45rem;
-  flex-grow: 20;
-  width: 10rem;
-  margin-top: 20px;
-}
-.profile_view .user_profile_header #header-names {
-  font-size: 1.75rem;
-  display: flex;
-}
-.profile_view .user_profile_header #header-document-id {
-  margin-top: 0;
-  font-size: 1.15rem;
-}
-.profile_view .user_profile_header #header-document-id > p {
-  margin-top: 0;
-}
-.profile_view .profile_basics {
-  padding-left: 35px;
-  max-height: 50vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  align-items: flex-start;
-}
-.profile_view .profile_basics .profile_data_element:before {
-  font-size: 1.25rem;
-  font-weight: 900;
-}
-.profile_view .profile_basics .profile_data_element:after {
-  border-radius: 6px;
-  opacity: 0.5;
-  transform: translateY(-125%);
-  width: 100%;
-  height: 0.25rem;
-  background: #b1a7a6;
-  display: block;
-  content: "";
-}
-.profile_view .profile_basics #admin-names:before {
-  content: "Nombre: ";
-}
-.profile_view .profile_basics #admin-surnames:before {
-  content: "Apellidos: ";
-}
-.profile_view .profile_basics #admin-document-id:before {
-  content: "Cédula: ";
-}
-.profile_view .profile_basics #admin-email:before {
-  content: "Correo eléctronico: ";
-}
-.profile_view .profile_basics #admin-password:before {
-  content: "Contraseña: ";
-}
-.profile_view .profile_basics #admin-phone-number:before {
-  content: "Teléfono: ";
-}
-.profile_view .profile_basics #admin-location:before {
-  content: "Localización: ";
-}
-.profile_view .profile_basics #admin-age:before {
-  content: "Edad: ";
-}
-.profile_view .profile_basics #admin-gender:before {
-  content: "Género: ";
+@media screen and (min-width: 1440px) {
+  .administration_menu {
+    left: 87.5%;
+    right: 7.5%;
+  }
 }/*# sourceMappingURL=AdminProfile.css.map */

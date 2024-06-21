@@ -11,10 +11,6 @@ $timberwolf: #e6e6e6;
 $white-smoke: #f5f3f4ff;
 $white: #ffffffff;
 
-html:root {
-  font-size: 12px;
-}
-
 body {
   background: $white-smoke;
   scroll-behavior: smooth;
@@ -48,8 +44,12 @@ body {
 
 // Tamaños de fuente
 $titles-font-sizing: 1.75rem;
-$subtitles-font-sizing: 1.15rem;
+$subtitles-font-sizing: 1.20rem;
 $content-and-descriptions-font-sizing: 1rem;
+
+$relative-titles-font-sizing: 1.75em;
+$relative-subtitles-font-sizing: 1.20em;
+$relative-content-and-descriptions-font-sizing: 1em;
 
 // Formas
 $box-cut-radius: 6px;
@@ -59,7 +59,7 @@ $box-cut-radius: 6px;
   background: linear-gradient(-45deg, $cornell-red, $imperial-red);
   border: none;
   border-radius: $box-cut-radius;
-  font-size: $content-and-descriptions-font-sizing;
+  font-size: $relative-content-and-descriptions-font-sizing;
   color: $white;
   box-shadow: 0 0 20px $imperial-red;
   padding: 10px;

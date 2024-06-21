@@ -1,12 +1,16 @@
 @import '../../styles/variables';
 
 .administration_menu {
-    width: 100vw;
-    height: 6rem;
+    width: 90vw;
+    height: 5em;
     border-radius: $box-cut-radius;
     background: #252525;
-    position: sticky;
-    bottom: 0;
+    position: absolute;
+    bottom: 2.5%;
+    left: 5%;
+    right: 5%;
+    margin: auto;
+    font-size: 12px;
 
     & > .menu_button {
         flex-grow: auto;
@@ -14,8 +18,15 @@
 
         & > .menu_button__trigger {
             color: $silver;
-            font-size: 1.05rem;
+            font-size: .95em;
             font-weight: 900;
+
+            & > .administration_menu__options {
+                list-style: none;
+                display: none;
+            }
         }
     }
 }
+
+@import  "../../styles/responsive-adaptations/general_responsive.scss";

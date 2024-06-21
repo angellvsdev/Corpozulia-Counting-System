@@ -2,17 +2,19 @@
 
 .profile_view {
     height: 100vh;
+    font-size: 14px;
 
     .user_profile_header {
+        font-size: $relative-subtitles-font-sizing;
         height: 40vh;
         font-weight: 900;
         margin-bottom: 20px;
-        background: linear-gradient(-45deg, #2a292b, #454346);
+        background: linear-gradient(-45deg, $imperial-red, $blood-red);
         color: $white;
 
         &:after {
-            width: 3rem;
-            height: .5rem;
+            width: 3em;
+            height: .5em;
             background: $imperial-red;
             border-radius: $box-cut-radius;
             display: block;
@@ -23,29 +25,35 @@
         
         .profile_header_symbol {
             align-items: center;
-            background: linear-gradient(-45deg, $blood-red, $cornell-red);
             color: $white-smoke;
             text-align: center;
             border-radius: 50%;
-            font-size: 3.45rem;
+            font-size: $relative-titles-font-sizing;
             flex-grow: 20;
-            width: 10rem;
             margin-top: 20px;
+
+            &__icon_element {
+                font-size: 1.5em;
+            }
         }
 
         #header-names {
-            font-size: $titles-font-sizing;
+            font-size: $relative-subtitles-font-sizing;
             display: flex;
         }
 
         #header-document-id {
             margin-top: 0;
-            font-size: $subtitles-font-sizing;
+            font-size: $relative-subtitles-font-sizing;
 
             & > p {
                 margin-top: 0;
             }
         }
+    }
+
+    .user_profile_data_body {
+        font-size: $relative-content-and-descriptions-font-sizing;
     }
 
     .profile_basics {
@@ -56,8 +64,14 @@
         align-items: flex-start;
 
         .profile_data_element {
+            font-size: 14px;
+
+            &_content {
+                font-size: $relative-content-and-descriptions-font-sizing;
+            }
+
             &:before {
-                font-size: 1.25rem;
+                font-size: .95em;
                 font-weight: 900;
             }
 
@@ -66,7 +80,7 @@
                 opacity: .5;
                 transform: translateY(-125%);
                 width: 100%;
-                height: .25rem;
+                height: .25em;
                 background: $silver;
                 display: block;
                 content: "";
@@ -110,3 +124,5 @@
         }
     }
 }
+
+@import  "../../styles/responsive-adaptations/general_responsive.scss";

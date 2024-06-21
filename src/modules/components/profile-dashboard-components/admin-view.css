@@ -1,5 +1,64 @@
-html:root {
+body {
+  background: #f5f3f4;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.plus-jakarta-sans-light {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-medium {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.plus-jakarta-sans-bold {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.base_button__button {
+  background: linear-gradient(-45deg, #a4161a, #e5383b);
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  color: white;
+  box-shadow: 0 0 20px #e5383b;
+  padding: 10px;
+}
+
+.administration_menu {
+  width: 90vw;
+  height: 5em;
+  border-radius: 6px;
+  background: #252525;
+  position: absolute;
+  bottom: 2.5%;
+  left: 5%;
+  right: 5%;
+  margin: auto;
   font-size: 12px;
+}
+.administration_menu > .menu_button {
+  flex-grow: auto;
+  width: 37.5%;
+}
+.administration_menu > .menu_button > .menu_button__trigger {
+  color: #b1a7a6;
+  font-size: 0.95em;
+  font-weight: 900;
+}
+.administration_menu > .menu_button > .menu_button__trigger > .administration_menu__options {
+  list-style: none;
+  display: none;
 }
 
 body {
@@ -33,26 +92,79 @@ body {
   background: linear-gradient(-45deg, #a4161a, #e5383b);
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1em;
   color: white;
   box-shadow: 0 0 20px #e5383b;
   padding: 10px;
 }
 
-.administration_menu {
-  width: 100vw;
-  height: 6rem;
-  border-radius: 6px;
-  background: #252525;
-  position: sticky;
-  bottom: 0;
+@media screen and (min-width: 768px) {
+  html:root {
+    font-size: 16px;
+  }
+  .modal_window {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    background: linear-gradient(-45deg, #a4161a, #e5383b);
+  }
+  .formulary {
+    width: 60vw;
+    height: 75vh;
+    position: absolute;
+    top: 10%;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .homepage_header__markers_select {
+    font-size: 1em;
+  }
+  .information_section__elements__content {
+    padding: 25px;
+  }
+  .information_section__image {
+    width: 80%;
+  }
+  .profile_header_symbol__icon {
+    font-size: 2.5em;
+    width: 4em;
+  }
 }
-.administration_menu > .menu_button {
-  flex-grow: auto;
-  width: 37.5%;
+@media screen and (min-width: 912px) {
+  html:root {
+    font-size: 17px;
+  }
+  .formulary {
+    font-size: 15px;
+  }
+  .profile_view .profile_basics .profile_data_element {
+    font-size: 18px;
+  }
+  .administration_menu {
+    width: 5em;
+    top: 5%;
+    bottom: 5%;
+    right: 5%;
+    height: 60vh;
+    flex-flow: column wrap;
+    align-content: center;
+    left: 80%;
+    width: 8em;
+    font-size: 18px;
+  }
 }
-.administration_menu > .menu_button > .menu_button__trigger {
-  color: #b1a7a6;
-  font-size: 1.05rem;
-  font-weight: 900;
+@media screen and (min-width: 1280px) {
+  .administration_menu {
+    left: 90%;
+    right: 10%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .administration_menu {
+    left: 87.5%;
+    right: 7.5%;
+  }
 }/*# sourceMappingURL=admin-view.css.map */

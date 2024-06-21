@@ -35,53 +35,6 @@ body {
   padding: 10px;
 }
 
-.column_box {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-.column_box > * {
-  margin: 2.5px;
-  flex-grow: 1;
-}
-
-body {
-  background: #f5f3f4;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-.plus-jakarta-sans-light {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.plus-jakarta-sans-medium {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.plus-jakarta-sans-bold {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.base_button__button {
-  background: linear-gradient(-45deg, #a4161a, #e5383b);
-  border: none;
-  border-radius: 6px;
-  font-size: 1em;
-  color: white;
-  box-shadow: 0 0 20px #e5383b;
-  padding: 10px;
-}
-
 @media screen and (min-width: 768px) {
   html:root {
     font-size: 16px;
@@ -142,13 +95,13 @@ body {
 }
 @media screen and (min-width: 1280px) {
   .administration_menu {
-    left: 90%;
+    left: 87.5%;
     right: 10%;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1368px) {
   .administration_menu {
     left: 87.5%;
     right: 7.5%;
   }
-}/*# sourceMappingURL=ColumnBox.css.map */
+}/*# sourceMappingURL=general_responsive.css.map */

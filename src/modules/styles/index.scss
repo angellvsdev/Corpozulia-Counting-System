@@ -1,5 +1,9 @@
 @import './_variables', './_formularies';
 
+html:root {
+    font-size: 12px;
+}
+
 .homepage_header {
     width: 100vw;
     height: 100vh;
