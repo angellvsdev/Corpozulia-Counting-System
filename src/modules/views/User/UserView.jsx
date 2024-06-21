@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'axios'; // Comentado para usar mocks
 import { useUser } from '../../UserContext';
-import Request from '../../models/RequestModel'; // Ajusta la ruta según la ubicación de tu modelo Request
+import Request from '../../models/Request';
+import Benefit from '../../models/Benefit';
 
 const UserView = () => {
     const { user } = useUser();
@@ -11,27 +12,88 @@ const UserView = () => {
     const [error, setError] = useState(null);
     const [newRequestMessage, setNewRequestMessage] = useState('');
 
+    const fetchRequest = async (userId) => {
+        try {
+            // Simulando la obtención de datos en lugar de usar axios
+            //const responseRequest = await axios.get(`/api/requests/user/${userId}`);
+           const responseRequest = {
+                id: 1,
+                message: "Mock request message",
+                user: {
+                    id: userId,
+                    name: user.name,
+                    surname: user.surname,
+                    email: user.email,
+                    idNumber: user.idNumber,
+                    sector: user.sector,
+                    location: user.location,
+                    gender: user.gender,
+                    age: user.age,
+                    phone: user.phone
+                }
+            };
+            const userRequest = Request.fromJson(responseRequest);
+            setRequest(userRequest);
+        } catch (err) {
+            setError(err);
+        }
+    };
+
+    const fetchBenefit = async (userId) => {
+        try {
+            //const responseBenefit = await axios.get(`/api/benefits/user/${userId}`);
+            const responseBenefit = {
+                id: 1,
+                details: "Mock benefit details",
+                user: {
+                    id: userId,
+                    name: user.name,
+                    surname: user.surname,
+                    email: user.email,
+                    idNumber: user.idNumber,
+                    sector: user.sector,
+                    location: user.location,
+                    gender: user.gender,
+                    age: user.age,
+                    phone: user.phone
+                },
+                request: {
+                    id: 1,
+                    message: "Mock request message",
+                    user: {
+                        id: userId,
+                        name: user.name,
+                        surname: user.surname,
+                        email: user.email,
+                        idNumber: user.idNumber,
+                        sector: user.sector,
+                        location: user.location,
+                        gender: user.gender,
+                        age: user.age,
+                        phone: user.phone
+                    }
+                },
+                status: true,
+                items: [],
+                creationDate: "2024-06-18T00:00:00Z"
+            };
+            const userBenefit = Benefit.fromJson(responseBenefit);
+            setBenefit(userBenefit);
+        } catch (err) {
+            setError(err);
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                // Obtener el Request del usuario
-                const responseRequest = await axios.get(`/api/requests/user/${user.id}`);
-                if (responseRequest.data) {
-                    const userRequest = Request.fromJson(responseRequest.data);
-                    setRequest(userRequest);
-                }
-
-                // Obtener el Benefit del usuario si existe
-                const responseBenefit = await axios.get(`/api/benefits/user/${user.id}`);
-                if (responseBenefit.data) {
-                    setBenefit(responseBenefit.data);
-                }
-
+            //LOCAL
+            //    await fetchRequest(1);
+            
+            //    await fetchBenefit(1);
+            //Servidor
+            //    await fetchRequest(user.id);
+            //    await fetchBenefit(user.id);
                 setLoading(false);
-            } catch (err) {
-                setError(err);
-                setLoading(false);
-            }
         };
 
         fetchData();
@@ -42,14 +104,29 @@ const UserView = () => {
         try {
             if (request) {
                 // Si ya existe un request, actualizarlo
-                const updatedRequest = new Request(request.id, newRequestMessage, { id: user.id });
-                await axios.put(`/api/requests/${request.id}`, updatedRequest.toJson());
+                //const updatedRequest = new Request(request.id, newRequestMessage, user);
+                 await axios.put(`/api/requests/${request.id}`, updatedRequest.toJson());
                 setRequest({ ...request, message: newRequestMessage });
             } else {
                 // Si no existe un request, crear uno nuevo
-                const newRequest = new Request(null, newRequestMessage, { id: user.id });
+                //const newRequest = new Request(null, newRequestMessage, user);
                 const response = await axios.post('/api/requests', newRequest.toJson());
-                const createdRequest = Request.fromJson(response.data);
+                const createdRequest = Request.fromJson({
+                    id: 2,
+                    message: newRequestMessage,
+                    user: {
+                        id: user.id,
+                        name: user.name,
+                        surname: user.surname,
+                        email: user.email,
+                        idNumber: user.idNumber,
+                        sector: user.sector,
+                        location: user.location,
+                        gender: user.gender,
+                        age: user.age,
+                        phone: user.phone
+                    }
+                });
                 setRequest(createdRequest);
             }
             setNewRequestMessage('');
@@ -67,12 +144,14 @@ const UserView = () => {
                 <h2>Detalles del Benefit</h2>
                 <div>
                     <strong>ID del Benefit:</strong> {benefit.id} <br />
-                    {/* Mostrar otros detalles del Benefit según la estructura de datos */}
+                    <strong>Detalles del Benefit:</strong> {benefit.details} <br />
+                    <strong>Estado de la petición:</strong> {benefit.status ? 'Activo' : 'Inactivo'} <br />
+                    <strong>ID del Request:</strong> {benefit.request.id} <br />
+                    <strong>Fecha de Creación:</strong> {benefit.creationDate.toISOString()} <br />
                 </div>
             </div>
         );
     }
-
     // Mostrar los detalles del Request si existe
     if (request) {
         return (
