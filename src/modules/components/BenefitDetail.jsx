@@ -1,8 +1,8 @@
 // components/BenefitDetail.jsx
 import React from 'react';
-import Request from '../models/Request';
-import Benefit from '../models/Benefit';
-import User from '../models/User';
+import Request from '../models/RequestModel';
+import Benefit from '../models/BenefitModel';
+import User from '../models/UserModel';
 
 const BenefitDetail = ({ benefit }) => {
     const containerStyles = 'bg-white p-4 rounded shadow';
@@ -14,7 +14,7 @@ const BenefitDetail = ({ benefit }) => {
             <h2 className={titleStyles}>Benefit ID: {benefit.id}</h2>
             <div className={detailStyles}>Details: {benefit.details}</div>
             <div className={detailStyles}>Status: {benefit.status}</div>
-            <div className={detailStyles}>Creation Date: {benefit.creationDate}</div>
+            <div className={detailStyles}>Creation Date: {benefit.creationDate.toISOString()}</div>
 
             <h3 className={titleStyles}>User Information</h3>
             <div className={detailStyles}>Name: {benefit.user.name} {benefit.user.surname}</div>

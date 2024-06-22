@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../../UserContext';
-import Request from '../../models/Request';
-import Benefit from '../../models/Benefit';
+import Request from '../../models/RequestModel';
+import Benefit from '../../models/BenefitModel';
 import { Dialog, Transition } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
 import LoadingModal from '../../components/LoadingModal';

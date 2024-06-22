@@ -13,35 +13,6 @@ class User {
     }
 
     // Getters and Setters
-    getId() { return this.id; }
-    setId(id) { this.id = id; }
-
-    getName() { return this.name; }
-    setName(name) { this.name = name; }
-
-    getSurname() { return this.surname; }
-    setSurname(surname) { this.surname = surname; }
-
-    getEmail() { return this.email; }
-    setEmail(email) { this.email = email; }
-
-    getIdNumber() { return this.idNumber; }
-    setIdNumber(idNumber) { this.idNumber = idNumber; }
-
-    getSector() { return this.sector; }
-    setSector(sector) { this.sector = sector; }
-
-    getLocation() { return this.location; }
-    setLocation(location) { this.location = location; }
-
-    getGender() { return this.gender; }
-    setGender(gender) { this.gender = gender; }
-
-    getAge() { return this.age; }
-    setAge(age) { this.age = age; }
-
-    getPhone() { return this.phone; }
-    setPhone(phone) { this.phone = phone; }
 
     // toJson method
     toJson() {

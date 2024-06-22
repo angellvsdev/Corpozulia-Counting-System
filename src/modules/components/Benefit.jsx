@@ -1,30 +1,99 @@
- // components/Benefit.jsx
-import React from 'react';
-import BenefitModel from '../models/Benefit';
-import UserModel from '../models/User';
-import RequestModel from '../models/Request';
+// Benefit.jsx
 
-const Benefit = ({ benefit }) => {
-    const containerStyles = 'bg-white p-4 rounded shadow';
-    const titleStyles = 'text-lg font-bold mb-2';
-    const detailStyles = 'text-gray-700 mb-2';
+import React, { useState } from 'react';
+import BenefitController from '../controllers/BenefitController';
+import { Dialog } from '@headlessui/react'; // Importamos Dialog de Headless UI
 
-    return (
-        <div className={containerStyles}>
-            <h2 className={titleStyles}>Benefit ID: {benefit.id}</h2>
-            <div className={detailStyles}>Details: {benefit.details}</div>
-            <div className={detailStyles}>Status: {benefit.status}</div>
-            <div className={detailStyles}>Creation Date: {benefit.creationDate}</div>
+const Benefit = ({ benefit, onUpdate, onDelete }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedBenefit, setEditedBenefit] = useState({ ...benefit });
+  console.log(benefit);
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
 
-            <h3 className={titleStyles}>User Information</h3>
-            <div className={detailStyles}>Name: {benefit.user.name} {benefit.user.surname}</div>
-            <div className={detailStyles}>Email: {benefit.user.email}</div>
-            <div className={detailStyles}>ID Number: {benefit.user.idNumber}</div>
+  const handleSave = async () => {
+    try {
+      const updatedBenefit = await BenefitController.updateBenefit(benefit.id, editedBenefit);
+      onUpdate(updatedBenefit);
+      setIsEditing(false);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
-            <h3 className={titleStyles}>Request Information</h3>
-            <div className={detailStyles}>Message: {benefit.request.message}</div>
+  const handleDelete = async () => {
+    try {
+      await BenefitController.deleteBenefit(benefit.id);
+      onDelete(benefit.id);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditedBenefit(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  return (
+    <div className="border p-4 rounded-md shadow-md">
+      {isEditing ? (
+        <div>
+          <input
+            type="text"
+            name="name"
+            value={editedBenefit.id}
+            onChange={handleChange}
+            className="border rounded-md p-2 mb-2 w-full"
+          />
+          <input
+            type="text"
+            name="description"
+            value={editedBenefit.details}
+            onChange={handleChange}
+            className="border rounded-md p-2 mb-2 w-full"
+          />
+          <div className="flex space-x-2">
+            <button
+              onClick={handleSave}
+              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Save
+            </button>
+            <button
+              onClick={() => setIsEditing(false)}
+              className="bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
-    );
+      ) : (
+        <div>
+          <h3 className="text-lg font-semibold mb-2">{benefit.id}</h3>
+          <p className="mb-4">{benefit.details}</p>
+          <div className="flex space-x-2">
+            <button
+              onClick={handleEdit}
+              className="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              Edit
+            </button>
+            <button
+              onClick={handleDelete}
+              className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Benefit;

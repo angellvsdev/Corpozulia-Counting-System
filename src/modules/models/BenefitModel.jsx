@@ -1,6 +1,6 @@
-import User from './User';
-import Request from './Request';
-import Item from './Item';
+import User from './UserModel';
+import Request from './RequestModel';
+import Item from './ItemModel';
 
 class Benefit {
     constructor(id, user, details, request, status, items, creationDate) {
@@ -50,16 +50,32 @@ class Benefit {
 
     // fromJson method
     static fromJson(json) {
-        return new Benefit(
-            json.id,
-            User.fromJson(json.user),
-            json.details,
-            Request.fromJson(json.request),
-            json.status,
-            json.items.map(item => Item.fromJson(item)),
-            new Date(json.creationDate)
-        );
+        try {    
+            const user = User.fromJson(json.user);    
+            const request = Request.fromJson(json.request);    
+            const items = json.items.map(item => {
+                const parsedItem = Item.fromJson(item);
+                                return parsedItem;
+            });
+    
+            const creationDate = new Date(json.creationDate);    
+            const benefit = new Benefit(
+                json.id,
+                user,
+                json.details,
+                request,
+                json.status,
+                items,
+                creationDate
+            );
+        
+            return benefit;
+        } catch (error) {
+            console.error('Error while parsing JSON to Benefit object:', error);
+            throw error; // Re-throw the error to propagate it further if needed
+        }
     }
+    
 }
 
 export default Benefit;
