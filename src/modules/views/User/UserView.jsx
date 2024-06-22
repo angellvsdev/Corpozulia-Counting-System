@@ -1,99 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Comentado para usar mocks
 import { useUser } from '../../UserContext';
 import Request from '../../models/Request';
 import Benefit from '../../models/Benefit';
+import { Dialog, Transition } from '@headlessui/react';
+import { useNavigate } from 'react-router-dom'; // Para manejar la navegación
+
 
 const UserView = () => {
     const { user } = useUser();
     const [request, setRequest] = useState(null);
-    const [benefit, setBenefit] = useState(null); // Estado para el Benefit
+    const [benefit, setBenefit] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [newRequestMessage, setNewRequestMessage] = useState('');
+    const history = useNavigate(); // Hook para manejar la navegación
 
-    const fetchRequest = async (userId) => {
-        try {
-            // Simulando la obtención de datos en lugar de usar axios
-            //const responseRequest = await axios.get(`/api/requests/user/${userId}`);
-            const responseRequest = {
-                id: 1,
-                message: "Mock request message",
-                user: {
-                    id: userId,
-                    name: user.name,
-                    surname: user.surname,
-                    email: user.email,
-                    idNumber: user.idNumber,
-                    sector: user.sector,
-                    location: user.location,
-                    gender: user.gender,
-                    age: user.age,
-                    phone: user.phone
-                }
-            };
-            const userRequest = Request.fromJson(responseRequest);
-            setRequest(userRequest);
-        } catch (err) {
-            setError(err);
-        }
+    const handleProfileButtonClick = () => {
+        history('/user/profile'); // Redirigir al usuario a la ruta /user/profile
     };
 
-    const fetchBenefit = async (userId) => {
-        try {
-            //const responseBenefit = await axios.get(`/api/benefits/user/${userId}`);
-            const responseBenefit = {
-                id: 1,
-                details: "Mock benefit details",
-                user: {
-                    id: userId,
-                    name: user.name,
-                    surname: user.surname,
-                    email: user.email,
-                    idNumber: user.idNumber,
-                    sector: user.sector,
-                    location: user.location,
-                    gender: user.gender,
-                    age: user.age,
-                    phone: user.phone
-                },
-                request: {
-                    id: 1,
-                    message: "Mock request message",
-                    user: {
-                        id: userId,
-                        name: user.name,
-                        surname: user.surname,
-                        email: user.email,
-                        idNumber: user.idNumber,
-                        sector: user.sector,
-                        location: user.location,
-                        gender: user.gender,
-                        age: user.age,
-                        phone: user.phone
-                    }
-                },
-                status: true,
-                items: [],
-                creationDate: "2024-06-18T00:00:00Z"
-            };
-            const userBenefit = Benefit.fromJson(responseBenefit);
-            setBenefit(userBenefit);
-        } catch (err) {
-            setError(err);
-        }
-    };
-
+    // Simulación de fetchRequest y fetchBenefit
     useEffect(() => {
         const fetchData = async () => {
-            // Simulando la obtención de datos en lugar de usar axios
-            //await fetchRequest(1);
-            //await fetchBenefit(1);
-            
-            // Suponiendo que quieres cargar datos del usuario actual
+            // Simular la obtención de datos en lugar de usar axios
             //await fetchRequest(user.id);
             //await fetchBenefit(user.id);
-            
+
             setLoading(false);
         };
 
@@ -104,14 +36,10 @@ const UserView = () => {
         e.preventDefault();
         try {
             if (request) {
-                // Si ya existe un request, actualizarlo
-                //const updatedRequest = new Request(request.id, newRequestMessage, user);
-                //await axios.put(`/api/requests/${request.id}`, updatedRequest.toJson());
+                // Actualizar request existente
                 setRequest({ ...request, message: newRequestMessage });
             } else {
-                // Si no existe un request, crear uno nuevo
-                //const newRequest = new Request(null, newRequestMessage, user);
-                //const response = await axios.post('/api/requests', newRequest.toJson());
+                // Crear nuevo request
                 const createdRequest = Request.fromJson({
                     id: 2,
                     message: newRequestMessage,
@@ -136,7 +64,59 @@ const UserView = () => {
         }
     };
 
-    if (loading) return <div className="container mx-auto mt-4">Cargando...</div>;
+    // Función para cerrar el diálogo
+    const handleCloseDialog = () => {
+        setError(null);
+    };
+
+    // Mostrar diálogo de error si hay un error
+    if (error) {
+        return (
+            <Transition.Root show={true} as={React.Fragment}>
+                <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={handleCloseDialog}>
+                    <div className="flex items-center justify-center min-h-screen">
+                        <TransitionChild
+                            as={React.Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                        >
+                            <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+                        </TransitionChild>
+
+                        <TransitionChild
+                            as={React.Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 scale-95"
+                            enterTo="opacity-100 scale-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 scale-100"
+                            leaveTo="opacity-0 scale-95"
+                        >
+                            <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm w-full">
+                                <DialogTitle as="h3" className="text-lg font-medium text-gray-900">
+                                    Error
+                                </DialogTitle>
+                                <div className="mt-2 text-sm text-gray-500">{error.message}</div>
+                                <div className="mt-4 flex justify-end">
+                                    <button
+                                        type="button"
+                                        onClick={handleCloseDialog}
+                                        className="text-sm font-medium text-gray-500 hover:text-gray-600"
+                                    >
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </TransitionChild>
+                    </div>
+                </Dialog>
+            </Transition.Root>
+        );
+    }
 
     // Mostrar el Benefit si existe
     if (benefit) {
@@ -174,7 +154,6 @@ const UserView = () => {
                         <p><strong>Género:</strong> {request.user.gender}</p>
                         <p><strong>Edad:</strong> {request.user.age}</p>
                         <p><strong>Teléfono:</strong> {request.user.phone}</p>
-                        {/* Puedes continuar mostrando otros detalles según sea necesario */}
                     </div>
                 </div>
             </div>
@@ -182,31 +161,40 @@ const UserView = () => {
     }
 
     // Mostrar el formulario para crear un nuevo Request si no hay ni Benefit ni Request
-    return (
-        <div className="container mx-auto mt-4">
-            <div className="user-requests">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900">Crear una petición</h2>
-                <form onSubmit={handleNewRequestSubmit} className="mt-4">
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Mensaje:</label>
-                        <input
-                            type="text"
-                            value={newRequestMessage}
-                            onChange={(e) => setNewRequestMessage(e.target.value)}
-                            className="px-3 py-2 border border-gray-300 rounded-lg w-full"
-                            required
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                        Crear Request
-                    </button>
-                </form>
-            </div>
+    // Mostrar el formulario para crear un nuevo Request si no hay ni Benefit ni Request
+return (
+    <div className="container mx-auto mt-4">
+        <div className="user-requests">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Crear una petición</h2>
+            <form onSubmit={handleNewRequestSubmit} className="mt-4">
+                <div className="mb-4">
+                    <label htmlFor="newRequestMessage" className="block text-gray-700 font-bold mb-2">Mensaje:</label>
+                    <input
+                        id="newRequestMessage"
+                        type="text"
+                        value={newRequestMessage}
+                        onChange={(e) => setNewRequestMessage(e.target.value)}
+                        className="px-3 py-2 border border-gray-300 rounded-lg w-full"
+                        required
+                    />
+                </div>
+                <button
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                    Crear Request
+                </button>
+            </form>
         </div>
-    );
+        <button
+                onClick={handleProfileButtonClick}
+                className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg z-10"
+            >
+                Mi Perfil
+            </button>
+    </div>
+);
+
 };
 
 export default UserView;
