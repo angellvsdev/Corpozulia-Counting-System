@@ -9,6 +9,7 @@ import UserMockTest from './views/MockTest/UserMockTest.jsx';
 import ItemListMock from './views/MockTest/ItemListMock.jsx';
 import UserProfile from './views/User/UserProfile.jsx';
 import UserView from './views/User/UserView.jsx';
+import ItemView from './views/Items/ItemsView.jsx';
 
 const App = () => (
     <BrowserRouter>
@@ -21,6 +22,7 @@ const App = () => (
           <Route path='/itemsMock' element={<ItemListMock />} />
           <Route path='/user/profile' element={<UserProfile />} />
           <Route path='/user' element={<UserView />} />
+          <Route path='/items' element={<ItemView/>} />
         </Routes>
     </BrowserRouter>
   )
