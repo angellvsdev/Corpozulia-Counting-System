@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './Index.jsx'
 // import ".././modules/styles/index.css"
 // import "./styles/responsive-adaptations/general_responsive.css";
+import './styles/tailwind.css'
 
 import { UserProvider } from './UserContext';
 

@@ -9,29 +9,29 @@ function Login() {
     const [password, setPassword] = useState('');
     const [document_type, setDocType] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const {user, setUser} =useUser();
+    const { user, setUser } = useUser();
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         if (!documentId || !password) {
             setErrorMessage('Por favor complete todos los campos.');
             return; // Salir de la función si los campos están incompletos
         }
-    
+
         setErrorMessage('');
-    
+
         try {
             // Suponiendo que `documentId` es el nombre de usuario
             const response = await axios.post('/api/login', {
                 username: documentId,
                 password: password
             });
-    
+
             if (response.status === 200) {
                 const userData = response.data;
                 setUser(userData);
-    
+
                 if (userData.roles === "ADMIN") {
                     navigate("/admin");
                 } else if (userData.roles === "USER") {
@@ -45,10 +45,10 @@ function Login() {
         } catch (error) {
             setErrorMessage(error.response.data.message)
         }
-    
+
         console.log('Iniciando sesión con cedula ' + documentId + ' y contraseña ' + password);
     };
-    
+
 
     return (
         <>
