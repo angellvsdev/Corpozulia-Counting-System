@@ -1,6 +1,6 @@
 import React from "react";
-import AdminProfileBody from '../../components/AdminProfileBody'
-import UserProfileHeader from '../../components/UserProfileHeader'
+import AdminProfileBody from '../../components/profile-dashboard-components/AdminProfileBody';
+import UserProfileHeader from '../../components/UserProfileHeader';
 
 const UserProfile = () =>{
         return (

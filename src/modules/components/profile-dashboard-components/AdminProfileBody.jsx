@@ -2,7 +2,7 @@ import React from "react";
 import ColumnBox from "../flexbox-template-components/ColumnBox/ColumnBox";
 import RowBox from "../flexbox-template-components/RowBox/RowBox";
 import UserDataField from "../UserDataField";
-import {useUser} from '../UserContext';
+import {useUser} from '../UserContext.jsx';
 
 const AdminProfileBody = (props) => {
     const { user } = useUser();
