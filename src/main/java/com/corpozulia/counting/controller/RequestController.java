@@ -4,10 +4,11 @@ import com.corpozulia.counting.dto.RequestDTO;
 import com.corpozulia.counting.models.Request;
 import com.corpozulia.counting.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Controlador para manejar operaciones relacionadas con las solicitudes.
@@ -25,8 +26,11 @@ public class RequestController {
      * @return Lista de todas las solicitudes existentes
      */
     @GetMapping
-    public List<Request> getAllRequests() {
-        return requestService.getAllRequests();
+    public ResponseEntity<Page<Request>> getAllBenefits(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<Request> requests = requestService.getAllRequests(page, size);
+        return ResponseEntity.ok(requests);
     }
 
     /**
@@ -37,14 +41,22 @@ public class RequestController {
      */
     @GetMapping("/user/{userId}")
     public ResponseEntity<Request> getRequestsByUserId(@PathVariable Long userId) {
-        Request request = requestService.getRequestByUserId(userId);
-        if (request == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(request);
+        // Validar que userId no sea negativo
+        if (userId <= 0) {
+            return ResponseEntity.badRequest().build();
         }
-    }
 
+        // Llamar al servicio para obtener la solicitud por userId
+        Optional<Request> request = requestService.getRequestByUserId(userId);
+
+        // Si no se encuentra solicitud para el userId dado
+        if (request.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // Devolver la solicitud encontrada
+        return ResponseEntity.ok(request.get());
+    }
     /**
      * Endpoint para crear una nueva solicitud.
      *
@@ -52,10 +64,10 @@ public class RequestController {
      * @return ResponseEntity con la solicitud creada y código de estado OK si es exitoso
      */
     @PostMapping
-    public ResponseEntity<?> createRequest(@RequestBody RequestDTO requestDTO) {
+    public ResponseEntity<?> createRequest(@RequestBody Request request) {
         try {
-            Request request = requestService.createRequest(requestDTO);
-            return ResponseEntity.ok(request);
+            Request request1 = requestService.createRequest(request);
+            return ResponseEntity.ok(request1);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage()); // Manejo de errores de solicitud incorrecta
         }

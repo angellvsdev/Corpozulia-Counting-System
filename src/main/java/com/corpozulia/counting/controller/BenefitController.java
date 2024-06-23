@@ -3,10 +3,10 @@ package com.corpozulia.counting.controller;
 import com.corpozulia.counting.models.Benefit;
 import com.corpozulia.counting.service.BenefitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,30 +27,33 @@ public class BenefitController {
      * @return ResponseEntity con el beneficio creado o un error de solicitud incorrecta (400)
      */
     @PostMapping("/request/{requestId}")
-    public ResponseEntity<Benefit> createBenefit(@PathVariable Long requestId, @RequestBody Benefit benefit) {
+    public ResponseEntity<?> createBenefit(@PathVariable Long requestId, @RequestBody Benefit benefit) {
+    	System.out.println(benefit);
         try {
             Benefit createdBenefit = benefitService.createBenefit(requestId, benefit);
             return ResponseEntity.ok(createdBenefit);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null); // Manejo de error cuando la solicitud es incorrecta
+        	System.out.println(e);
+            return ResponseEntity.badRequest().body(e.getMessage()); // Manejo de error cuando la solicitud es incorrecta
         }
     }
+    @GetMapping("/user/{userId}")
     public ResponseEntity<Benefit> getBenefitsByUserId(@PathVariable Long userId) {
-        // Validar que userId no sea nulo o negativo
-        if (userId == null || userId <= 0) {
+        // Validar que userId no sea negativo
+        if (userId <= 0) {
             return ResponseEntity.badRequest().build();
         }
 
         // Llamar al servicio para obtener el beneficio por userId
-        Benefit benefit = benefitService.getBenefitByUserId(userId);
+        Optional<Benefit> benefit = benefitService.getBenefitByUser(userId);
 
         // Si no se encuentra beneficio para el userId dado
-        if (benefit == null) {
+        if (benefit.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
         // Devolver el beneficio encontrado
-        return ResponseEntity.ok(benefit);
+        return ResponseEntity.ok(benefit.get());
     }
     /**
      * Endpoint para obtener todos los beneficios.
@@ -58,8 +61,10 @@ public class BenefitController {
      * @return ResponseEntity con la lista de beneficios existentes
      */
     @GetMapping
-    public ResponseEntity<List<Benefit>> getAllBenefits() {
-        List<Benefit> benefits = benefitService.getAllBenefits();
+    public ResponseEntity<Page<Benefit>> getAllBenefits(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<Benefit> benefits = benefitService.getAllBenefits(page, size);
         return ResponseEntity.ok(benefits);
     }
 
@@ -85,9 +90,9 @@ public class BenefitController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<Benefit> updateBenefit(@PathVariable Long id, @RequestBody Benefit newBenefit) {
-        Benefit updatedBenefit = benefitService.updateBenefit(id, newBenefit);
-        if (updatedBenefit != null) {
-            return ResponseEntity.ok(updatedBenefit);
+        Optional<Benefit> updatedBenefit = benefitService.updateBenefit(id, newBenefit);
+        if (updatedBenefit.isPresent()) {
+            return ResponseEntity.ok(updatedBenefit.get());
         } else {
             return ResponseEntity.notFound().build();
         }

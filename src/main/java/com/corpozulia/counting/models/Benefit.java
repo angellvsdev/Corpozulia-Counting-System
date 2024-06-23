@@ -2,25 +2,14 @@ package com.corpozulia.counting.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Entidad que representa un beneficio solicitado por un usuario.
+ */
 @Entity
 @Table(name = "benefits")
 public class Benefit {
@@ -29,10 +18,14 @@ public class Benefit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Usuario asociado al beneficio. Relación OneToOne: un usuario puede tener como máximo un beneficio.
+     */
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", unique = true, nullable = false)
     private User user;
 
+    @NotBlank(message = "Los detalles son obligatorios")
     @Column(nullable = false)
     private String details;
 
@@ -40,12 +33,13 @@ public class Benefit {
     @JoinColumn(name = "request_id", nullable = false)
     private Request request;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private boolean status;
-    
-    @OneToMany
-    private List<Item> items;
-    
+    private BenefitStatus status;
+
+    @OneToMany(mappedBy = "benefit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BenefitItem> benefitItems;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
@@ -73,8 +67,8 @@ public class Benefit {
         return details;
     }
 
-    public void setDetails(String description) {
-        this.details = description;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public Request getRequest() {
@@ -85,11 +79,11 @@ public class Benefit {
         this.request = request;
     }
 
-    public boolean getStatus() {
+    public BenefitStatus getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(BenefitStatus status) {
         this.status = status;
     }
 
@@ -100,11 +94,12 @@ public class Benefit {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-    public List<Item> getItems() {
-        return items;
+
+    public List<BenefitItem> getBenefitItems() {
+        return benefitItems;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setBenefitItems(List<BenefitItem> benefitItems) {
+        this.benefitItems = benefitItems;
     }
 }

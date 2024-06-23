@@ -3,9 +3,11 @@ package com.corpozulia.counting.service;
 import com.corpozulia.counting.models.Item;
 import com.corpozulia.counting.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,8 +22,9 @@ public class ItemService {
     }
 
     // Método para obtener todos los items
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
+    public Page<Item> getAllItems(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return itemRepository.findAll(pageable);
     }
 
     // Método para obtener un item por su id

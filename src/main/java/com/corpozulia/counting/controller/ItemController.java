@@ -6,11 +6,11 @@ import com.corpozulia.counting.service.ItemService;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -40,11 +40,14 @@ public class ItemController {
      *
      * @return ResponseEntity con la lista de todos los items existentes
      */
-    @GetMapping()
-    public ResponseEntity<List<Item>> getAllItems() {
-        List<Item> items = itemService.getAllItems();
-        return ResponseEntity.ok(items);
+    @GetMapping
+    public ResponseEntity<Page<Item>> getAllItems(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<Item> requests = itemService.getAllItems(page, size);
+        return ResponseEntity.ok(requests);
     }
+
 
     /**
      * Endpoint para obtener un item por su ID.

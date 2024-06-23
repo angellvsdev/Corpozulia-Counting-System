@@ -1,13 +1,13 @@
 package com.corpozulia.counting.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import java.util.List;
 
+/**
+ * Clase que representa un ítem dentro de un beneficio.
+ */
 @Entity
 @Table(name = "items")
 public class Item {
@@ -15,15 +15,31 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
+    /**
+     * Nombre del ítem.
+     */
     @NotBlank(message = "El nombre es obligatorio")
     @Column(nullable = false)
     private String name;
 
+    /**
+     * Descripción del ítem.
+     */
     private String description;
 
+    /**
+     * Cantidad del ítem.
+     */
+    @NotNull(message = "La cantidad es obligatoria")
     @Column(nullable = false)
     private int quantity;
+
+    /**
+     * Lista de relaciones entre beneficios e ítems.
+     */
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BenefitItem> benefitItems;
 
     // Getters and setters
 
@@ -58,5 +74,12 @@ public class Item {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
+
+    public List<BenefitItem> getBenefitItems() {
+        return benefitItems;
+    }
+
+    public void setBenefitItems(List<BenefitItem> benefitItems) {
+        this.benefitItems = benefitItems;
+    }
 }
