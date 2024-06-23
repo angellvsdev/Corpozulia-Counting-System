@@ -12,7 +12,7 @@ const BenefitFormModal = ({ isOpen, onRequestClose, onRequestSubmit, request }) 
             user: request.user,
             details: details,
             request: request,
-            status: true, // Por defecto, el status puede ser true o false según necesites
+            status: "APPROVED", // Por defecto, el status puede ser true o false según necesites
             items: [], // Aquí puedes inicializar los items del Benefit si es necesario
             creationDate: new Date()
         });

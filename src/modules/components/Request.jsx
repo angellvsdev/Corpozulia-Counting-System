@@ -17,7 +17,7 @@ const Request = ({ request }) => {
     const handleSubmitBenefit = (newBenefit) => {
         // Aquí podrías enviar el nuevo Benefit a través de tu lógica de controlador o almacenarlo localmente
         try{
-            BenefitController.createBenefit(newBenefit.request.id);
+            BenefitController.createBenefit(newBenefit.request.id, newBenefit);
         } catch (err){
             console.error(err);
         }
