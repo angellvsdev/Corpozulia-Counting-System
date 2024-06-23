@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../../UserContext';
-import Request from '../../models/Request';
-import Benefit from '../../models/Benefit';
+import Request from '../../models/RequestModel';
+import Benefit from '../../models/BenefitModel';
 import { Dialog, Transition } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
 import LoadingModal from '../../components/LoadingModal';
-
+import BenefitDetail from '../../components/BenefitDetail';
 const UserView = () => {
     const { user } = useUser();
     const [request, setRequest] = useState(null);
@@ -22,12 +22,58 @@ const UserView = () => {
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
                 const mockBenefit = {
-                    id: 1,
-                    details: 'Mock Benefit Details',
-                    status: true,
-                    request: { id: 1 },
-                    creationDate: new Date().toISOString()
-                };
+                    "id": 1,
+                    "user": {
+                        "id": 123,
+                        "name": "Juan",
+                        "surname": "Pérez",
+                        "email": "juan.perez@example.com",
+                        "idNumber": "12345678",
+                        "sector": "Sector A",
+                        "location": "Ciudad X",
+                        "gender": "Male",
+                        "age": 35,
+                        "phone": "123456789",
+                        "creationDate": "2023-06-15T12:30:45Z",
+                        "userType": "Regular"
+                    },
+                    "details": "Benefit details...",
+                    "request": {
+                        "id": 456,
+                        "message": "Request message...",
+                        "user": {
+                            "id": 123,
+                            "name": "Juan",
+                            "surname": "Pérez",
+                            "email": "juan.perez@example.com",
+                            "idNumber": "12345678",
+                            "sector": "Sector A",
+                            "location": "Ciudad X",
+                            "gender": "Male",
+                            "age": 35,
+                            "phone": "123456789",
+                            "creationDate": "2023-06-15T12:30:45Z",
+                            "userType": "Regular"
+                        }
+                    },
+                    "status": "APPROVED",
+                    "benefitItems": [
+                        {
+                            "id": 101,
+                            "name": "Item 1",
+                            "description": "Item 1 description...",
+                            "quantity": 2
+                        },
+                        {
+                            "id": 102,
+                            "name": "Item 2",
+                            "description": "Item 2 description...",
+                            "quantity": 1
+                        }
+                    ],
+                    "creationDate": "2023-06-15T12:30:45Z"
+                }
+                    ;
 
                 const mockRequest = {
                     id: 1,
@@ -123,18 +169,22 @@ const UserView = () => {
 
     if (benefit) {
         return (
-            <div className="container mx-auto mt-4">
-                <div className="user-requests">
-                    <h2 className="text-2xl font-bold">Detalles del Benefit</h2>
-                    <div className="mt-4">
-                        <p><strong>ID del Benefit:</strong> {benefit.id}</p>
-                        <p><strong>Detalles del Benefit:</strong> {benefit.details}</p>
-                        <p><strong>Estado de la petición:</strong> {benefit.status ? 'Activo' : 'Inactivo'}</p>
-                        <p><strong>ID del Request:</strong> {benefit.request.id}</p>
-                        <p><strong>Fecha de Creación:</strong> {new Date(benefit.creationDate).toLocaleDateString()}</p>
-                    </div>
-                </div>
+            <div className="container mx-auto px-4 py-8">
+                <h1 className="text-2xl font-bold mb-4">Benefit Detail</h1>
+                {benefit && <BenefitDetail benefit={benefit} />}
             </div>
+            // <div className="container mx-auto mt-4">
+            //     <div className="user-requests">
+            //         <h2 className="text-2xl font-bold">Detalles del Benefit</h2>
+            //         <div className="mt-4">
+            //             <p><strong>ID del Benefit:</strong> {benefit.id}</p>
+            //             <p><strong>Detalles del Benefit:</strong> {benefit.details}</p>
+            //             <p><strong>Estado de la petición:</strong> {benefit.status ? 'Activo' : 'Inactivo'}</p>
+            //             <p><strong>ID del Request:</strong> {benefit.request.id}</p>
+            //             <p><strong>Fecha de Creación:</strong> {new Date(benefit.creationDate).toLocaleDateString()}</p>
+            //         </div>
+            //     </div>
+            // </div>
         );
     }
 

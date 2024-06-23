@@ -10,6 +10,8 @@ import ItemListMock from './views/MockTest/ItemListMock.jsx';
 import UserProfile from './views/User/UserProfile.jsx';
 import UserView from './views/User/UserView.jsx';
 import ItemView from './views/Items/ItemsView.jsx';
+import BenefitView from './views/Benefit/BenefitView.jsx';
+import RequestView from './views/Request/RequestView.jsx';
 import InventoryView from './views/Inventory/InventoryView.jsx';
 
 const App = () => (
@@ -23,7 +25,9 @@ const App = () => (
           <Route path='/itemsMock' element={<ItemListMock />} />
           <Route path='/user/profile' element={<UserProfile />} />
           <Route path='/user' element={<UserView />} />
-          <Route path='/items' element={<ItemView />} />
+          <Route path='/items' element={<ItemView/>} />
+          <Route path='/benefits' element={<BenefitView/>} />
+          <Route path='/requests' element={<RequestView/>} />
           <Route path='/inventory' element={<InventoryView />} />
         </Routes>
     </BrowserRouter>

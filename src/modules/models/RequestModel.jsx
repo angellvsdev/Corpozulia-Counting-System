@@ -1,21 +1,13 @@
-import User from './User';
+import User from './UserModel';
 
 class Request {
     constructor(id, message, user) {
         this.id = id;
         this.message = message;
-        this.user = user; // This should be an instance of the User class
+        this.user = new User(user.id, user.name, user.surname, user.email, user.idNumber, user.sector, user.location, user.gender, user.age, user.phone); // This should be an instance of the User class
     }
 
     // Getters and Setters
-    getId() { return this.id; }
-    setId(id) { this.id = id; }
-
-    getMessage() { return this.message; }
-    setMessage(message) { this.message = message; }
-
-    getUser() { return this.user; }
-    setUser(user) { this.user = user; }
 
     // toJson method
     toJson() {

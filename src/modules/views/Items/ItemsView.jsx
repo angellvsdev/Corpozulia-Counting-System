@@ -8,8 +8,12 @@ const ItemView = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const items = await ItemController.fetchItems();
-            setItems(items);
+            try{
+                const items = await ItemController.fetchItems();
+                setItems(items);
+            } catch (err){
+                console.error(err)
+            }
         };
         fetchData();
     }, []);
