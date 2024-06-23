@@ -4,6 +4,7 @@ import LoadingModal from '../../components/LoadingModal';
 import Benefit from '../../models/BenefitModel';
 import BenefitList from '../../components/BenefitList';
 
+
 const BenefitView = () => {
   const [benefits, setBenefits] = useState([]);
   const [loading, setLoading] = useState(false);
