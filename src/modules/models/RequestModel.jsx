@@ -4,7 +4,7 @@ class Request {
     constructor(id, message, user) {
         this.id = id;
         this.message = message;
-        this.user = new User(user.id, user.name, user.surname, user.email, user.idNumber, user.sector, user.location, user.gender, user.age, user.phone); // This should be an instance of the User class
+        this.user = User.fromJson(user); // This should be an instance of the User class
     }
 
     // Getters and Setters

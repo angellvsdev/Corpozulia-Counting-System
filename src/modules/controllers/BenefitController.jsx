@@ -30,24 +30,43 @@ const BenefitController = {
             throw new Error(`Error al obtener los beneficios: ${error.message}`);
         }
     },
+    getBenefitsByUserId: async (userId) => {
+        try {
+            const response = await axios.get(`${API_URL}/user/${userId}`);
 
+            if (response.status === 400) {
+                // Manejar error de solicitud incorrecta
+                return null;
+            } else if (response.status === 404) {
+                // Manejar recurso no encontrado
+                return null;
+            } else if (response.status === 200) {
+                // Procesar el beneficio encontrado
+                return Benefit.fromJson(response.data); // Asume que tienes un método fromJson en tu modelo Benefit
+            } else {
+                throw new Error(`Unexpected status code ${response.status}`);
+            }
+        } catch (error) {
+            throw new Error(`Error al obtener los beneficios: ${error.message}`);
+        }
+    },
     createBenefit: async (requestId, newBenefit) => {
         try {
-            const online = await isOnline(); // Espera la verificación de conexión
-            if (!online) {
-                const nextId = Math.max(...benefits.map(benefit => benefit.id)) + 1;
-                const createdBenefit = new Benefit(
-                    nextId,
-                    User.fromJson(newBenefit.user),
-                    newBenefit.details,
-                    Request.fromJson(newBenefit.request),
-                    'Pending',
-                    newBenefit.items.map(item => Item.fromJson(item)),
-                    newBenefit.creationDate
-                );
-                benefits.push(createdBenefit.toJson());
-                return createdBenefit;
-            }
+            // const online = await isOnline(); // Espera la verificación de conexión
+            // if (!online) {
+            //     const nextId = Math.max(...benefits.map(benefit => benefit.id)) + 1;
+            //     const createdBenefit = new Benefit(
+            //         nextId,
+            //         User.fromJson(newBenefit.user),
+            //         newBenefit.details,
+            //         Request.fromJson(newBenefit.request),
+            //         'Pending',
+            //         newBenefit.items.map(item => Item.fromJson(item)),
+            //         newBenefit.creationDate
+            //     );
+            //     benefits.push(createdBenefit.toJson());
+            //     return createdBenefit;
+            // }
 
             // Creación de beneficio en la API real si hay conexión
             const response = await axios.post(`${API_URL}/request/${requestId}`, newBenefit);
