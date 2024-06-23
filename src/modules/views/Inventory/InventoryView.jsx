@@ -14,7 +14,7 @@ const InventoryView = () => (
                 </div>
             </div>
             <InventoryList />
-            <UserMenu context="lg:right-0 lg:w-32 lg:text-sm" />
+            <UserMenu context="lg:right-0 lg:w-26 lg:text-sm" />
         </div>
     </>
 )
