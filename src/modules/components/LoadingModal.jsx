@@ -1,14 +1,14 @@
 import React from "react";
 
 const LoadingModal = () => (
-    <div className="fixed top-0 left-0 w-full h-full bg-black opacity-75 z-50 flex justify-center items-center">
-        <div className="bg-white rounded-lg shadow-md p-4 flex">
+    <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-red-900 opacity-1">
+        <div className="flex p-4 bg-white rounded-lg shadow-md">
             <div className="mr-2">
-                <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <circle className="fill-current text-gray-500" cx="12" cy="12" r="10" strokeWidth="4" stroke="currentColor" />
+                <svg className="w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <circle className="text-black fill-current" cx="12" cy="12" r="10" strokeWidth="4" stroke="currentColor" />
                 </svg>
             </div>
-            <span className="text-gray-500">Cargando...</span>
+            <span className="text-black">Cargando...</span>
         </div>
     </div>
 );
