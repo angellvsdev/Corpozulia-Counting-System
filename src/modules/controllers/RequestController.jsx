@@ -1,7 +1,7 @@
 // controllers/RequestController.js
 import axios from 'axios';
 import Request from '../models/RequestModel';
-import requestMocks from '../mocks/requestMocks.jsx'; // Importa los mocks de requests si los tienes
+import requestMocks from '../mocks/requestMocks'; // Importa los mocks de requests si los tienes
 
 const API_URL = 'http://localhost:8080/api/requests'; // Asegúrate de que la URL es correcta
 
@@ -21,7 +21,9 @@ const RequestController = {
             if (!online) {
                 console.log("Offline mode: using mocks");
                 // Mapear los mocks a objetos Request
-                return requestMocks.map(req => new Request(req.id, req.message, req.user));
+                console.log("\n");
+                console.log(requestMocks);
+                return requestMocks.map(req => Request.fromJson(req));
             }
 
             // Consulta a la API real si hay conexión

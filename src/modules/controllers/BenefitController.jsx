@@ -3,7 +3,7 @@ import axios from 'axios';
 import Benefit from '../models/BenefitModel'; // Asegúrate de importar el modelo Benefit
 import benefits from '../mocks/benefitMocks'; // Importa los mocks de beneficios
 
-const API_URL = 'http://localhost:8080/api/benefits'; // Asegúrate de que la URL es correcta
+const API_URL = 'api/benefits'; // Asegúrate de que la URL es correcta
 
 const isOnline = async () => {
     try {
@@ -30,7 +30,26 @@ const BenefitController = {
             throw new Error(`Error al obtener los beneficios: ${error.message}`);
         }
     },
+    getBenefitsByUserId: async (userId) => {
+        try {
+            const response = await axios.get(`${API_URL}/user/${userId}`);
 
+            if (response.status === 400) {
+                // Manejar error de solicitud incorrecta
+                return null;
+            } else if (response.status === 404) {
+                // Manejar recurso no encontrado
+                return null;
+            } else if (response.status === 200) {
+                // Procesar el beneficio encontrado
+                return Benefit.fromJson(response.data); // Asume que tienes un método fromJson en tu modelo Benefit
+            } else {
+                throw new Error(`Unexpected status code ${response.status}`);
+            }
+        } catch (error) {
+            throw new Error(`Error al obtener los beneficios: ${error.message}`);
+        }
+    },
     createBenefit: async (requestId, newBenefit) => {
         try {
             const online = await isOnline(); // Espera la verificación de conexión
