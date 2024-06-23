@@ -1,6 +1,5 @@
 package com.corpozulia.counting.service;
 
-import com.corpozulia.counting.dto.RequestDTO;
 import com.corpozulia.counting.models.Request;
 import com.corpozulia.counting.models.User;
 import com.corpozulia.counting.repository.RequestRepository;
@@ -30,8 +29,7 @@ public class RequestService {
 
     public Page<Request> getAllRequests(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return requestRepository.findAll(pageable);
-
+        return requestRepository.findRequestsNoBenefit(pageable);
     }
 
     public Request createRequest(Request request) {

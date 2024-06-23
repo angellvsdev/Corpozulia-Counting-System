@@ -1,12 +1,14 @@
 package com.corpozulia.counting.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 /**
  * Clase que representa la relación entre Benefit e Item.
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "benefit_items")
 public class BenefitItem {
 

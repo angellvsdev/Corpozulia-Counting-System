@@ -1,12 +1,13 @@
 package com.corpozulia.counting.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 /**
  * Entidad que representa un beneficio solicitado por un usuario.
  */
@@ -46,7 +47,9 @@ public class Benefit {
     private Date creationDate;
 
     // Getters and setters (omitted for brevity)
-
+    public Benefit() {
+  
+    }
     public Long getId() {
         return id;
     }
