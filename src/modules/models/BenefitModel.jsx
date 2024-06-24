@@ -1,15 +1,14 @@
 import User from './UserModel';
 import Request from './RequestModel';
-import Item from './ItemModel';
-
+import BenefitItem from './BenefitItemModel';
 class Benefit {
-    constructor(id, user, details, request, status, items, creationDate) {
+    constructor(id, user, details, request, status, benefitItems, creationDate) {
         this.id = id;
         this.user = user; // This should be an instance of the User class
         this.details = details;
         this.request = request; // This should be an instance of the Request class
         this.status = status; // Boolean value
-        this.items = items; // Array of Item instances
+        this.benefitItems = benefitItems // Array of Item instances
         this.creationDate = new Date(creationDate); // Ensure it's a Date object
     }
 
@@ -43,7 +42,7 @@ class Benefit {
             details: this.details,
             request: this.request.toJson(),
             status: this.status,
-            items: this.items.map(item => item.toJson()),
+            benefitItems: this.benefitItems.map(item => item.toJson()),
             creationDate: this.creationDate.toISOString()
         };
     }
@@ -53,10 +52,7 @@ class Benefit {
         try {    
             const user = User.fromJson(json.user);    
             const request = Request.fromJson(json.request);    
-            const items = json.items.map(item => {
-                const parsedItem = Item.fromJson(item);
-                                return parsedItem;
-            });
+            const benefitItems = json.benefitItems.map(item => BenefitItem.fromJson(item));
     
             const creationDate = new Date(json.creationDate);    
             const benefit = new Benefit(
@@ -65,7 +61,7 @@ class Benefit {
                 json.details,
                 request,
                 json.status,
-                items,
+                benefitItems,
                 creationDate
             );
         
