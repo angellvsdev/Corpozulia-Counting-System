@@ -22,7 +22,6 @@ const InventoryItemAddingModal = () => (
                     </div>
                 </div>
             </div>
-
         </div>
     </>
 )
