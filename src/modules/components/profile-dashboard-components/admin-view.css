@@ -158,11 +158,11 @@ body {
 }
 @media screen and (min-width: 1280px) {
   .administration_menu {
-    left: 90%;
+    left: 87.5%;
     right: 10%;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1368px) {
   .administration_menu {
     left: 87.5%;
     right: 7.5%;

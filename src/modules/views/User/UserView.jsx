@@ -79,12 +79,12 @@ const UserView = () => {
     if (benefitError || requestError) {
         const error = benefitError || requestError;
         return (
-            <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div className="flex items-center justify-center min-h-screen">
-                    <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm w-full">
+                    <div className="w-full max-w-sm p-4 bg-white rounded-lg shadow-lg">
                         <h3 className="text-lg font-medium text-gray-900">Error</h3>
                         <div className="mt-2 text-sm text-gray-500">{error.message}</div>
-                        <div className="mt-4 flex justify-end">
+                        <div className="flex justify-end mt-4">
                             <button
                                 type="button"
                                 onClick={handleCloseDialog}
@@ -103,7 +103,7 @@ const UserView = () => {
         <div className="container mx-auto mt-4">
             {benefit && (
                 <div className="mb-8">
-                    <h1 className="text-2xl font-bold mb-4">Benefit Detail</h1>
+                    <h1 className="mb-4 text-2xl font-bold">Benefit Detail</h1>
                     <BenefitDetail benefit={benefit} />
                 </div>
             )}
@@ -134,19 +134,19 @@ const UserView = () => {
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900">Crear una petición</h2>
                     <form onSubmit={handleNewRequestSubmit} className="mt-4">
                         <div className="mb-4">
-                            <label htmlFor="newRequestMessage" className="block text-gray-700 font-bold mb-2">Mensaje:</label>
+                            <label htmlFor="newRequestMessage" className="block mb-2 font-bold text-gray-700">Mensaje:</label>
                             <input
                                 id="newRequestMessage"
                                 type="text"
                                 value={newRequestMessage}
                                 onChange={(e) => setNewRequestMessage(e.target.value)}
-                                className="px-3 py-2 border border-gray-300 rounded-lg w-full"
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                                 required
                             />
                         </div>
                         <button
                             type="submit"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
                         >
                             Crear Request
                         </button>
@@ -155,7 +155,7 @@ const UserView = () => {
             )}
             <button
                 onClick={() => navigate('/user/profile')}
-                className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg z-10"
+                className="fixed z-10 px-4 py-2 font-bold text-white bg-blue-500 rounded-lg shadow-lg bottom-4 right-4 hover:bg-blue-700"
             >
                 Mi Perfil
             </button>
