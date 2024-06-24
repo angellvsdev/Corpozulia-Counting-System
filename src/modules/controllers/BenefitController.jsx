@@ -37,21 +37,7 @@ const BenefitController = {
     },
     createBenefit: async (requestId, newBenefit) => {
         try {
-            // const online = await isOnline(); // Espera la verificación de conexión
-            // if (!online) {
-            //     const nextId = Math.max(...benefits.map(benefit => benefit.id)) + 1;
-            //     const createdBenefit = new Benefit(
-            //         nextId,
-            //         User.fromJson(newBenefit.user),
-            //         newBenefit.details,
-            //         Request.fromJson(newBenefit.request),
-            //         'Pending',
-            //         newBenefit.items.map(item => Item.fromJson(item)),
-            //         newBenefit.creationDate
-            //     );
-            //     benefits.push(createdBenefit.toJson());
-            //     return createdBenefit;
-            // }
+
 
             // Creación de beneficio en la API real si hay conexión
             const response = await axios.post(`${API_URL}/request/${requestId}`, newBenefit);
