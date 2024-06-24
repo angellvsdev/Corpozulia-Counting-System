@@ -7,14 +7,15 @@ import axios from "axios";
 function Login() {
     const [documentId, setDocumentId] = useState('');
     const [password, setPassword] = useState('');
-    const [document_type, setDocType] = useState('');
+    const [documentType, setDocumentType] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { user, setUser } = useUser();
+    const { setUser } = useUser();
     const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!documentId || !password) {
+        if (!documentId || !password || !documentType) {
             setErrorMessage('Por favor complete todos los campos.');
             return; // Salir de la función si los campos están incompletos
         }
@@ -22,9 +23,12 @@ function Login() {
         setErrorMessage('');
 
         try {
-            // Suponiendo que `documentId` es el nombre de usuario
-            const response = await axios.post('/api/login', {
-                username: documentId,
+            // Concatenar documentType con documentId
+            const formattedDocumentId = `${documentType}${documentId}`;
+
+            // Enviar datos al backend
+            const response = await axios.post('http://localhost:8080/api/login', {
+                username: formattedDocumentId,
                 password: password
             });
 
@@ -43,12 +47,13 @@ function Login() {
                 setErrorMessage('Ocurrió un error al iniciar sesión.');
             }
         } catch (error) {
-            setErrorMessage(error.response.data.message)
+            if (error.response && error.response.data && error.response.data.message) {
+                setErrorMessage(error.response.data.message);
+            } else {
+                setErrorMessage('Error al iniciar sesión.');
+            }
         }
-
-        console.log('Iniciando sesión con cedula ' + documentId + ' y contraseña ' + password);
     };
-
 
     return (
         <>
@@ -62,33 +67,33 @@ function Login() {
                     <form onSubmit={handleSubmit} className="formulary__sending_module sign_in_formulary plus-jakarta-sans-medium">
                         <div className="input_field">
                             <select
-                                id="document_type"
+                                id="documentType"
                                 className="input_field"
-                                value={document_type}
-                                onChange={(e) => setDocType(e.target.value)}
+                                value={documentType}
+                                onChange={(e) => setDocumentType(e.target.value)}
                                 required
                             >
-                                <option value="" default>Tipo de documento</option>
+                                <option value="">Tipo de documento</option>
                                 <option value="V">- V</option>
                                 <option value="E">- E</option>
                                 <option value="J">- J</option>
                             </select>
                         </div>
                         <div className="input_field">
-                            <label htmlFor="document_id">Carnet de identidad</label>
+                            <label htmlFor="documentId">Carnet de identidad</label>
                             <input
-                                id="document_id"
+                                id="documentId"
                                 type="number"
-                                placeholder="Ej: 12.345.678"
+                                placeholder="Ej: 12345678"
                                 value={documentId}
                                 onChange={(e) => setDocumentId(e.target.value)}
                                 required
                             />
                         </div>
                         <div className="input_field">
-                            <label htmlFor="user_password">Contraseña</label>
+                            <label htmlFor="password">Contraseña</label>
                             <input
-                                id="user_password"
+                                id="password"
                                 type="password"
                                 placeholder="Ej: Mi-Contraseña123"
                                 value={password}
@@ -102,7 +107,7 @@ function Login() {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default Login;
