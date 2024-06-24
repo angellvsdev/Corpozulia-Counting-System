@@ -5,24 +5,9 @@ import benefits from '../mocks/benefitMocks'; // Importa los mocks de beneficios
 
 const API_URL = 'http://localhost:8080/api/benefits'; // Asegúrate de que la URL es correcta
 
-const isOnline = async () => {
-    try {
-        const response = await axios.get(API_URL);
-        return response.status === 200;
-    } catch (error) {
-        return false; // En caso de error, asumimos que no hay conexión
-    }
-};
-
 const BenefitController = {
     getAllBenefits: async () => {
         try {
-            const online = await isOnline(); // Espera la verificación de conexión
-            if (!online) {
-                console.log("Offline mode: using mocks");
-                return benefits.map(benefit => Benefit.fromJson(benefit)); // Mapear a instancias de Benefit
-            }
-
             // Consulta a la API real si hay conexión
             const response = await axios.get(API_URL);
             return response.data.content.map(benefit => Benefit.fromJson(benefit)); // Mapear a instancias de Benefit
@@ -78,16 +63,6 @@ const BenefitController = {
 
     deleteBenefit: async (benefitId) => {
         try {
-            const online = await isOnline(); // Espera la verificación de conexión
-            if (!online) {
-                const index = benefits.findIndex(benefit => benefit.id === benefitId);
-                if (index !== -1) {
-                    benefits.splice(index, 1);
-                    return true; // Éxito en la eliminación
-                }
-                return false; // Beneficio no encontrado
-            }
-
             // Eliminación de beneficio en la API real si hay conexión
             const response = await axios.delete(`${API_URL}/${benefitId}`);
             return response.status === 204; // Indica éxito si el código de estado es 204 (No Content)
