@@ -1,13 +1,12 @@
 import { React} from "react";
-import UserMenu from "../../components/UserMenu";
-import AdminProfile from "../../components/profile-dashboard-components/AdminProfile";
+import AdminLayout from "../../components/AdminLayout";
+import AdminRoutes from "../../components/AdminRoutes";
 import "../../components/profile-dashboard-components/admin-view.css";
 
 const AdminView = (props) => ( 
-    <>
-        <AdminProfile />
-        <UserMenu />
-    </>
+    <AdminLayout>
+        <AdminRoutes/>
+    </AdminLayout>
 )
 
 export default AdminView;
