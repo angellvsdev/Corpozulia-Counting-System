@@ -143,7 +143,11 @@ const Benefit = ({ benefit, onUpdate, onDelete }) => {
         request={benefit.request}
       />
 
-      <ConfirmationModal  isOpen={isOpen} onClose={handleCloseDialog} onConfirm={handleConfirmAction} />
+      <ConfirmationModal isOpen={isOpen}
+        onClose={handleCloseDialog}
+        onConfirm={handleConfirmAction}
+        title="Confirmación de Acción"
+        message="¿Estás seguro de que deseas realizar esta acción? Esta acción no se puede deshacer." />
     </div>
   );
 };

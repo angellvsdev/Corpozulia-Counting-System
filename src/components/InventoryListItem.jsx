@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBox, faWrench, faPenToSquare, faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
 import ItemController from "../controllers/ItemController";
-const InventoryListItem = ({ item, onEdit, onDelete}) => {
+import ConfirmationModal from "./ConfirmationModal";
+const InventoryListItem = ({ item, onEdit, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [editedItem, setEditedItem] = useState({
         name: item.name,
         description: item.description,
@@ -21,7 +23,25 @@ const InventoryListItem = ({ item, onEdit, onDelete}) => {
         onEdit(updatedItem.id, updatedItem);
         setIsEditing(false);
     };
-
+    const handleOpenDialog = () => {
+        setIsOpen(true);
+      };
+    
+      const handleCloseDialog = () => {
+        setIsOpen(false);
+      };
+      const handleConfirmAction = (confirmed) => {
+        if (confirmed) {
+          handleDeleteClick();
+          console.log('Acción confirmada');
+          // Aquí puedes realizar cualquier lógica o llamada a funciones que necesites al confirmar la acción.
+        } else {
+          console.log('Acción cancelada');
+          // Manejar la cancelación de la acción si es necesario
+        }
+        setIsOpen(false); // Cerrar el diálogo después de confirmar o cancelar
+      };
+    
     const handleCancelClick = () => {
         // Aquí podrías implementar la lógica para cancelar la edición
         // Por ejemplo, podrías restaurar el estado original del item
@@ -107,13 +127,18 @@ const InventoryListItem = ({ item, onEdit, onDelete}) => {
                             </button>
                         </div>
                         <div className="relative ml-2">
-                            <button type="button" onClick={(handleDeleteClick)} className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-2 rounded-full border-red-950 flex items-center justify-center text-white">
+                            <button type="button" onClick={(handleOpenDialog)} className="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-red-500 to-red-700 border-2 rounded-full border-red-950 flex items-center justify-center text-white">
                                 <FontAwesomeIcon icon={faBan} />
                             </button>
                         </div>
                     </>
                 )}
             </div>
+            <ConfirmationModal isOpen={isOpen}
+                onClose={handleCloseDialog}
+                onConfirm={handleConfirmAction}
+                title="Confirmación de Acción"
+                message="¿Estás seguro de que deseas realizar esta acción? Esta acción no se puede deshacer." />
         </div>
     );
 };

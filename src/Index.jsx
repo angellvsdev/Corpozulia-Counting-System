@@ -8,7 +8,6 @@ import UserMockTest from './views/MockTest/UserMockTest.jsx';
 import ItemListMock from './views/MockTest/ItemListMock.jsx';
 import UserProfile from './views/User/UserProfile.jsx';
 import UserView from './views/User/UserView.jsx';
-import ItemView from './views/Items/ItemsView.jsx';
 import BenefitView from './views/Benefit/BenefitView.jsx';
 import RequestView from './views/Request/RequestView.jsx';
 import InventoryView from './views/Inventory/InventoryView.jsx';

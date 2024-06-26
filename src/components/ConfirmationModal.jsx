@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-// Estilos CSS para el modal de confirmación con Tailwind CSS
 const customStyles = {
   content: {
     top: '50%',
@@ -21,15 +20,15 @@ const customStyles = {
   },
 };
 
-const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
+const ConfirmationModal = ({ isOpen, onClose, onConfirm, title, message }) => {
   const handleConfirm = () => {
-    onConfirm(true); // Ejecutar acción de confirmación con true
-    onClose(); // Cerrar el modal
+    onConfirm(true);
+    onClose();
   };
 
   const handleCancel = () => {
-    onConfirm(false); // Ejecutar acción de cancelación con false
-    onClose(); // Cerrar el modal
+    onConfirm(false);
+    onClose();
   };
 
   return (
@@ -38,19 +37,19 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
       onRequestClose={onClose}
       style={customStyles}
       contentLabel="Confirmación"
-      ariaHideApp={false} // Deshabilita el aviso de accesibilidad
+      ariaHideApp={false}
     >
       <div className="bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between pb-3">
-            <h2 className="text-xl font-bold">Confirmación</h2>
+            <h2 className="text-xl font-bold">{title}</h2>
             <button className="text-gray-500 hover:text-gray-700 focus:outline-none" onClick={onClose}>
               <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <p className="text-sm text-gray-700">¿Estás seguro de que deseas realizar esta acción? Esta acción no se puede deshacer.</p>
+          <p className="text-sm text-gray-700">{message}</p>
         </div>
         <div className="px-6 py-4 bg-gray-100 flex justify-end items-center">
           <button
