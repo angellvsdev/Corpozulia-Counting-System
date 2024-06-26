@@ -23,15 +23,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<SignUp />} />
-          <Route path='/admin' element={<AdminView />} />
-          <Route path='/userMock' element={<UserMockTest />} />
-          <Route path='/itemsMock' element={<ItemListMock />} />
-          <Route path='/user/profile' element={<UserProfile />} />
+          <Route path='/admin/*' element={<AdminView />} />
           <Route path='/user' element={<UserView />} />
-          <Route path='/items' element={<ItemView/>} />
-          <Route path='/benefits' element={<BenefitView />} />
-          <Route path='/requests' element={<RequestView />} />
-          <Route path='/inventory' element={<InventoryView />} />
         </Routes>
     </BrowserRouter>
   )

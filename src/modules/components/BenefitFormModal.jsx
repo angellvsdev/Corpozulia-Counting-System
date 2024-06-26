@@ -17,7 +17,7 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
         const fetchItems = async () => {
             try {
                 const fetchedItems = await ItemController.fetchItems();
-                setItems(fetchedItems);
+                setItems(fetchedItems.content.map(item => new Item(item.id, item.name, item.description, item.quantity, item.benefitItems))); // Establecer los ítems de la página actual
             } catch (error) {
                 console.error('Error fetching items:', error);
             }

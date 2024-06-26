@@ -75,20 +75,23 @@ const Benefit = ({ benefit, onUpdate, onDelete }) => {
         <div>
           <h3 className="text-lg font-semibold mb-2">{benefit.id}</h3>
           <p className="mb-4">{benefit.details}</p>
-           
+
           <h4 className="text-md font-semibold mb-2">Request</h4>
           <p className="mb-2">ID: {benefit.request.id}</p>
           <p className="mb-4">Message: {benefit.request.message}</p>
           <p className="mb-4">Status: {benefit.status}</p>
-
-          <h4 className="text-md font-semibold mb-2">Benefit Items</h4>
-          <ul className="mb-4">
-            {benefit.benefitItems.map(benefitItem => (
-              <li key={benefitItem.id}>
-                {benefitItem.item.name} - Quantity: {benefitItem.quantity}
-              </li>
-            ))}
-          </ul>
+          {benefit.benefitItems.length > 0 ? (
+            <ul className="mb-4">
+              <h4 className="text-md font-semibold mb-2">Benefit Items</h4>
+              {benefit.benefitItems.map(benefitItem => (
+                <li key={benefitItem.id}>
+                  {benefitItem.item.name} - Quantity: {benefitItem.quantity}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No benefit items available.</p>
+          )}
           <div className="flex space-x-2">
             <button
               onClick={handleEdit}
