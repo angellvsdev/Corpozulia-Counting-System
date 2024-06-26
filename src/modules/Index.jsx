@@ -25,6 +25,10 @@ const App = () => (
           <Route path='/register' element={<SignUp />} />
           <Route path='/admin/*' element={<AdminView />} />
           <Route path='/user' element={<UserView />} />
+          <Route path='/items' element={<ItemView/>} />
+          <Route path='/benefits' element={<BenefitView />} />
+          <Route path='/requests' element={<RequestView />} />
+          <Route path='/inventory' element={<InventoryView />} />
         </Routes>
     </BrowserRouter>
   )
