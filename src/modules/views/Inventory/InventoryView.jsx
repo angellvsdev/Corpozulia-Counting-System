@@ -20,12 +20,6 @@ const InventoryView = () => {
         fetchData();
     }, []);
 
-    // return (
-    //     <div>
-    //         <h1>Lista de Ítems</h1>
-    //         <ItemList items={items} />
-    //     </div>
-    // );
     return (     
         <>
             <div className="w-screen h-screen bg-white bg-gradient-to-r from-yellow-600 to-yellow-500 blur-md">

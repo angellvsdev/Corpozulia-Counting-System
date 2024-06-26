@@ -8,7 +8,7 @@ const RequestList = ({ requests }) => {
     }
 
     return (
-        <div className="space-y-4">
+        <div className="self-center w-2/3 space-y-4">
             {requests.map(request => (
                 <Request key={request.id} request={request} />
             ))}

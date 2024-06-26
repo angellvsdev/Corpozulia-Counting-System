@@ -29,8 +29,8 @@ const App = () => (
           <Route path='/user/profile' element={<UserProfile />} />
           <Route path='/user' element={<UserView />} />
           <Route path='/items' element={<ItemView/>} />
-          <Route path='/benefits' element={<BenefitView/>} />
-          <Route path='/requests' element={<RequestView/>} />
+          <Route path='/benefits' element={<BenefitView />} />
+          <Route path='/requests' element={<RequestView />} />
           <Route path='/inventory' element={<InventoryView />} />
         </Routes>
     </BrowserRouter>

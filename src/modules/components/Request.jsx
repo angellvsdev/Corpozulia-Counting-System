@@ -28,16 +28,21 @@ const Request = ({ request }) => {
         return null; // No renderizar nada si isVisible es false
     }
     return (
-        <div className="border rounded-md p-4 mb-4">
-            <div className="flex justify-between mb-2">
-                <h2 className="text-lg font-bold">{request.message}</h2>
-                <p className="text-gray-500">{`ID: ${request.id}`}</p>
+        <div className="p-4 mb-4 border rounded-md bg-slate-300">
+            <div className="flex mb-2">
+                <div className='flex flex-col justify-center p-2 rounded-full shadow-md w-14 h-14 bg-gradient-to-r from-slate-200 to-slate-300 text-emerald-600'>
+                 <i className="mx-auto text-3xl fa-solid fa-seedling"></i>
+                </div>
+                <div className='flex flex-col' >
+                    <h2 className="mx-4 text-sm font-extrabold md:text-md lg:text-xl text-slate-700">{request.user.name} {request.user.surname}</h2>
+                    <p className="mx-4 mb-6 font-medium text-slate-600">{`ID: ${request.id}`}</p>            
+                </div>
             </div>
 
             {/* Acordeón para detalles del usuario */}
             <div>
                 <button
-                    className="w-full bg-gray-200 text-gray-700 font-bold py-2 px-4 mb-2 rounded-md focus:outline-none"
+                    className="w-full px-4 py-2 mb-2 font-bold rounded-md shadow-md bg-gradient-to-r from-gray-900 to-gray-700 focus:outline-none text-slate-300 shadow-slate-950"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? 'Cerrar detalles' : 'Ver detalles'}
@@ -51,21 +56,21 @@ const Request = ({ request }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div className="bg-gray-100 p-4 rounded-md">
-                        <p className="text-gray-700 mb-2">{`User ID: ${request.user.id}`}</p>
-                        <p className="text-gray-700 mb-2">{`Name: ${request.user.name}`}</p>
-                        <p className="text-gray-700 mb-2">{`Surname: ${request.user.surname}`}</p>
-                        <p className="text-gray-700 mb-2">{`Email: ${request.user.email}`}</p>
-                        <p className="text-gray-700 mb-2">{`Sector: ${request.user.sector}`}</p>
-                        <p className="text-gray-700 mb-2">{`Location: ${request.user.location}`}</p>
-                        <p className="text-gray-700 mb-2">{`Gender: ${request.user.gender}`}</p>
-                        <p className="text-gray-700 mb-2">{`Age: ${request.user.age}`}</p>
-                        <p className="text-gray-700 mb-2">{`Phone: ${request.user.phone}`}</p>
+                    <div className="p-4 bg-gradient-to-r from-gray-900 to-gray-700 plus-jakarta-sans-light">
+                        <p className="mb-2 text-slate-300">{`User ID: ${request.user.id}`}</p>
+                        <p className="mb-2 text-slate-300">{`Name: ${request.user.name}`}</p>
+                        <p className="mb-2 text-slate-300">{`Surname: ${request.user.surname}`}</p>
+                        <p className="mb-2 text-slate-300">{`Email: ${request.user.email}`}</p>
+                        <p className="mb-2 text-slate-300">{`Sector: ${request.user.sector}`}</p>
+                        <p className="mb-2 text-slate-300">{`Location: ${request.user.location}`}</p>
+                        <p className="mb-2 text-slate-300">{`Gender: ${request.user.gender}`}</p>
+                        <p className="mb-2 text-slate-300">{`Age: ${request.user.age}`}</p>
+                        <p className="mb-2 text-slate-300">{`Phone: ${request.user.phone}`}</p>
 
                         {/* Botón para crear un nuevo Benefit */}
                         <button
                             onClick={handleCreateBenefit}
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 focus:outline-none"
+                            className="px-4 py-2 mt-4 font-bold text-gray-900 transition bg-gray-300 rounded hover:bg-gray-950 hover:text-gray-300 focus:outline-none"
                         >
                             Crear Benefit
                         </button>

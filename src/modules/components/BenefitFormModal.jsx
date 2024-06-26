@@ -6,6 +6,7 @@ import ItemController from '../controllers/ItemController';
 import BenefitItem from '../models/BenefitItemModel';
 import Item from '../models/ItemModel';
 
+
 const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request }) => {
     const [details, setDetails] = useState('');
     const [items, setItems] = useState([]);
@@ -88,11 +89,14 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
                 leaveTo="opacity-0"
             >
                 <div className="w-full">
-                    <h3 className="mb-4 text-lg font-bold">Crear nuevo Benefit</h3>
+                    <div className='object-contain w-full h-40'>
+                        <img src="src\assets\undraw_message_sent_re_q2kl.svg" alt="Mensaje de entrada" className='h-full mx-auto' />
+                    </div>
+                    <h3 className="my-12 mb-8 text-lg font-bold text-center md:text-2xl text-gray-950">Aceptar Prestación</h3>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label htmlFor="details" className="block text-sm font-medium text-gray-700">
-                                Detalles
+                            <label htmlFor="details" className="block text-sm font-medium text-gray-700 md:text-lg">
+                                Detalles de la Prestación
                             </label>
                             <textarea
                                 id="details"
@@ -100,14 +104,14 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
                                 rows="3"
                                 value={details}
                                 onChange={(e) => setDetails(e.target.value)}
-                                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Detalles del Benefit"
+                                className="block w-full p-4 mt-1 text-gray-200 border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-400 sm:text-sm"
+                                placeholder="Añadir Detalles"
                                 required
                             />
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+                            <label htmlFor="status" className="block text-sm font-medium text-gray-700 md:text-lg">
                                 Estado
                             </label>
                             <select
@@ -115,7 +119,7 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
                                 name="status"
                                 value={status}
                                 onChange={(e) => setStatus(e.target.value)}
-                                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-400 sm:text-sm"
                                 required
                             >
                                 <option value="APPROVED">Aprobado</option>
@@ -125,9 +129,9 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
 
                         {status === 'APPROVED' && (
                             <div className="mb-4">
-                                <label className="block mb-2 text-sm font-medium text-gray-700">Seleccionar Items</label>
+                                <label className="block mb-2 text-sm font-medium text-gray-700 md:text-lg">Seleccionar Items</label>
                                 {items.map((item) => (
-                                    <div key={item.id} className="flex items-center mb-2">
+                                    <div key={item.id} className="flex items-center mb-2{ñ-">
                                         <input
                                             type="checkbox"
                                             id={`item-${item.id}`}
@@ -143,7 +147,7 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
                                                 max={item.quantity}
                                                 value={selectedItems.find((i) => i.id === item.id)?.quantity || 1}
                                                 onChange={(e) => handleQuantityChange(item, parseInt(e.target.value))}
-                                                className="w-16 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                                className="w-16 border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-400 sm:text-sm"
                                             />
                                         )}
                                     </div>
@@ -155,13 +159,13 @@ const BenefitFormModal = ({ modalOpen, onRequestClose, onRequestSubmit, request 
                             <button
                                 type="button"
                                 onClick={onRequestClose}
-                                className="px-4 py-2 mr-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none"
+                                className="px-4 py-2 mr-2 text-sm font-bold text-gray-200 transition rounded bg-gradient-to-r from-red-900 to-red-700 hover:from-gray-950 hover:to-gray-800 hover:text-gray-300 focus:outline-none"
                             >
                                 Cancelar
                             </button>
                             <button
                                 type="submit"
-                                className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none"
+                                className="px-4 py-2 text-sm font-bold text-gray-900 transition bg-gray-300 rounded focus:outline-none hover:bg-gray-950 hover:text-gray-300"
                             >
                                 Crear Benefit
                             </button>
